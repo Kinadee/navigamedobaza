@@ -32,6 +32,17 @@
         .header-color-10 { background-color: #f43f5e; color: white; } /* rose-500 */
         .header-color-11 { background-color: #3b82f6; color: white; } /* blue-500 */
         .header-color-12 { background-color: #d946ef; color: white; } /* fuchsia-500 */
+
+        /* ===== CSS ДЛЯ АНИМАЦИИ ГРАДИЕНТА ===== */
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-gradient {
+            background-size: 200% 200%;
+            animation: gradient-animation 4s ease infinite;
+        }       
     </style>
 </head>
 <body class="p-4 bg-gray-100">
@@ -589,11 +600,14 @@
             </div>
         </div>
         
-        <div class="mb-4 bg-white rounded-2xl shadow-xl overflow-hidden">
-             <a href="https://t.me/c/2246690930/150206" class="w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none bg-yellow-500">
+        <div class="mb-4 rounded-2xl shadow-xl p-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 animated-gradient transition-transform duration-300 hover:scale-105">
+            <a href="https://t.me/c/2246690930/150206" class="flex items-center justify-center p-4 font-bold text-lg text-white bg-gray-900/80 backdrop-blur-sm rounded-xl transition-all duration-300 hover:bg-gray-900/70">
+                <span class="text-xl mr-3">🎓</span>
                 ГОСЫ И АККРЕДИТАЦИЯ
+                <span class="text-xl ml-3">🎓</span>
             </a>
         </div>
+        
     </div>
 
     <script>
