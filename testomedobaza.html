@@ -703,17 +703,20 @@
             });
         });
 
-        // Функция для обработки ссылок Telegram
-        function openLink(url) {
-            // Проверяем, запущено ли приложение внутри Telegram Web App
-            if (window.Telegram && window.Telegram.WebApp) {
-                // Используем официальный API для открытия ссылки
-                window.Telegram.WebApp.openTelegramLink(url);
-            } else {
-                // Запасной вариант для обычных браузеров (для тестирования)
-                window.open(url, '_blank');
-            }
+// Функция для обработки ссылок Telegram
+    function openLink(url) {
+        if (window.Telegram && window.Telegram.WebApp) {
+            // Используем официальный API для открытия ссылки
+            window.Telegram.WebApp.openTelegramLink(url);
+            
+            // СРАЗУ ПОСЛЕ ЭТОГО даём команду закрыть окно Mini App
+            window.Telegram.WebApp.close();
+
+        } else {
+            // Запасной вариант для обычных браузеров
+            window.open(url, '_blank');
         }
-    </script>
+    }
+</script>
 </body>
 </html>
