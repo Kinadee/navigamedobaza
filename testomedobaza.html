@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display.swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -18,19 +17,21 @@
             transition: max-height 0.5s ease-in-out;
             background-color: white;
         }
-        .header-color-1 { background-color: #ef4444; color: white; }
-        .header-color-2 { background-color: #f97316; color: white; }
-        .header-color-3 { background-color: #eab308; color: white; }
-        .header-color-4 { background-color: #22c55e; color: white; }
-        .header-color-5 { background-color: #0ea5e9; color: white; }
-        .header-color-6 { background-color: #6366f1; color: white; }
-        .header-color-7 { background-color: #a855f7; color: white; }
-        .header-color-8 { background-color: #ec4899; color: white; }
-        .header-color-9 { background-color: #14b8a6; color: white; }
-        .header-color-10 { background-color: #f43f5e; color: white; }
-        .header-color-11 { background-color: #3b82f6; color: white; }
-        .header-color-12 { background-color: #d946ef; color: white; }
+        /* Стили для кастомных цветов заголовков */
+        .header-color-1 { background-color: #ef4444; color: white; } /* red-500 */
+        .header-color-2 { background-color: #f97316; color: white; } /* orange-500 */
+        .header-color-3 { background-color: #eab308; color: white; } /* yellow-500 */
+        .header-color-4 { background-color: #22c55e; color: white; } /* green-500 */
+        .header-color-5 { background-color: #0ea5e9; color: white; } /* sky-500 */
+        .header-color-6 { background-color: #6366f1; color: white; } /* indigo-500 */
+        .header-color-7 { background-color: #a855f7; color: white; } /* purple-500 */
+        .header-color-8 { background-color: #ec4899; color: white; } /* pink-500 */
+        .header-color-9 { background-color: #14b8a6; color: white; } /* teal-500 */
+        .header-color-10 { background-color: #f43f5e; color: white; } /* rose-500 */
+        .header-color-11 { background-color: #3b82f6; color: white; } /* blue-500 */
+        .header-color-12 { background-color: #d946ef; color: white; } /* fuchsia-500 */
 
+        /* ===== CSS ДЛЯ АНИМАЦИИ ГРАДИЕНТА ===== */
         @keyframes gradient-animation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -52,23 +53,17 @@
             animation: gradient-animation 10s ease infinite;
         }
         
+        /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК КУРСОВ ===== */
         .gradient-course-1 { background: linear-gradient(45deg, #a855f7, #6366f1); }
         .gradient-course-2 { background: linear-gradient(45deg, #3b82f6, #0ea5e9); }
         .gradient-course-3 { background: linear-gradient(45deg, #ef4444, #f97316); }
         .gradient-course-4 { background: linear-gradient(45deg, #22c55e, #14b8a6); }
         
+        /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК ФАКУЛЬТЕТОВ ===== */
         .faculty-gradient-1-stom { background: linear-gradient(45deg, #f97316, #eab308); }
         .faculty-gradient-1-lech { background: linear-gradient(45deg, #ef4444, #f43f5e); }
         .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
         .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
-        
-        /* Cтили для кнопок, которые были ссылками */
-        .tg-link-button {
-            cursor: pointer;
-            width: 100%;
-            display: flex;
-            align-items: center;
-        }
     </style>
 </head>
 <body class="p-4 bg-gray-100">
@@ -79,27 +74,27 @@
         <div class="mb-4 rounded-2xl shadow-xl p-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 animated-gradient">
             <div class="bg-white rounded-xl p-4">
                 <h2 class="w-full text-center font-bold text-lg text-gray-700 mb-2">ОСНОВНЫЕ РАЗДЕЛЫ</h2>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=21" class="tg-link-button justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                <a href="https://t.me/c/2246690930/21" class="flex items-center justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">💬</span> <span class="text-center flex-grow">БАЗАР — ОБЩЕНИЕ НА ЛЮБЫЕ ТЕМЫ</span> <span class="text-xl">💬</span>
-                </button>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=4910" class="tg-link-button justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                </a>
+                <a href="https://t.me/c/2246690930/4910" class="flex items-center justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">🔍</span> <span class="text-center flex-grow">ПОТЕРЯШКИ — ИЩЕМ И НАХОДИМ</span> <span class="text-xl">🔍</span>
-                </button>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=444" class="tg-link-button justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                </a>
+                <a href="https://t.me/c/2246690930/444" class="flex items-center justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">📌</span> <span class="text-center flex-grow">ВАЖНОЕ — ОБЪЯВЛЕНИЯ</span> <span class="text-xl">📌</span>
-                </button>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=166" class="tg-link-button justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                </a>
+                <a href="https://t.me/c/2246690930/166" class="flex items-center justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">👨‍🏫</span> <span class="text-center flex-grow">ИНФА О ПРЕПОДАХ — ОТЗЫВЫ И СОВЕТЫ</span> <span class="text-xl">👨‍🏫</span>
-                </button>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=119577" class="tg-link-button justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                </a>
+                <a href="https://t.me/c/2246690930/119577" class="flex items-center justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">🚨</span> <span class="text-center flex-grow">СРОЧНЫЕ ЗАПРОСЫ - РАЗЛИЧНОГО ВИДА ПРОСЬБЫ</span> <span class="text-xl">🚨</span>
-                </button>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=148909" class="tg-link-button justify-between bg-blue-300 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                </a>
+                <a href="https://t.me/c/2246690930/444/148909" class="flex items-center justify-between bg-blue-300 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">🗓️</span> <span class="text-center flex-grow">РАСПИСАНИЕ ДЕКАНАТА 2025</span> <span class="text-xl">🗓️</span>
-                </button>
-                <button data-link="tg://privatepost?channel=2246690930&msg_id=148919" class="tg-link-button justify-between bg-blue-300 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+                </a>
+                <a href="https://t.me/c/2246690930/444/148919" class="flex items-center justify-between bg-blue-300 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">📚</span> <span class="text-center flex-grow">КОНТАКТЫ УНИВЕРСИТЕТСКИХ СЛУЖБ</span> <span class="text-xl">📚</span>
-                </button>
+                </a>
 
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden mt-4">
                     <button class="accordion-button group w-full flex items-center justify-between animated-gradient text-white p-4 transition-all duration-300 focus:outline-none rounded-2xl group-[.active]:rounded-b-none hover:brightness-110">
@@ -112,19 +107,181 @@
                             📱 <span class="font-bold">На Android:</span> для перехода к исполнителю, зажмите ссылку и выберите "Открыть в..." 📱
                         </p>
                         <div class="py-2 space-y-2">
+    
                             <div class="overflow-hidden">
                                 <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-1 rounded-lg shadow-md">
-                                    <span class="flex items-center gap-1"><span>📚</span><span>Гуманитарные предметы</span></span>
+                                    <span class="flex items-center gap-1">
+                                        <span>📚</span>
+                                        <span>Гуманитарные предметы</span>
+                                    </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content p-2 bg-white space-y-1">
                                     <p class="text-center bg-white font-bold p-2">📘 Рефераты, НИРс, отчёты, аннотации, доклады, конспекты и эссе по истории, медицине, правоведению, экономике, философии, психологии, анатомии и биоэтике 📘</p>
-                                    <a href="https://vk.com/ulyanov_helper" target="_blank" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Александр Ульянов</a>
-                                    <a href="https://vk.com/dashapmed" target="_blank" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Дарья Бакланова</a>
-                                    <a href="https://vk.com/kruzenshternmed" target="_blank" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Александр Крузенштерн</a>
+                                    <a href="https://vk.com/ulyanov_helper" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Александр Ульянов</a>
+                                    <a href="https://vk.com/dashapmed" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Дарья Бакланова</a>
+                                    <a href="https://vk.com/kruzenshternmed" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Александр Крузенштерн</a>
                                  </div>
                             </div>
+    
+                            <div class="overflow-hidden">
+                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-2 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🔬</span>
+                                        <span>Биология</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/bio_med_helpstudents" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Инфузория Туфелька</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                    <a href="https://vk.com/ethereal1917" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Диана Шаповалова</a>
+                                </div>
                             </div>
+                            
+                            <div class="overflow-hidden">
+                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-3 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🧪</span>
+                                        <span>Химия</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/chemistrypavlova" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Лис Химический</a>
+                                    <a href="https://vk.com/e.himik" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Эрик Химик</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+    
+                            <div class="overflow-hidden">
+                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-4 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🧬</span>
+                                        <span>Биохимия</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/bmw513" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Марина Владимировна</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-5 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🦴</span>
+                                        <span>Анатомия</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/m.pavlova011" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Мария Павлова</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-6 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>📜</span>
+                                        <span>Латынь</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/m.krutel" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Маша Крутель</a>
+                                    <a href="https://vk.com/sergeeva_mashik" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Маша Сергеева</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-7 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🦠</span>
+                                        <span>Микробиология / Патан</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/evelina_yurevna" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Эвелина Гончарова</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-8 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>📐</span>
+                                        <span>Физика и Математика</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/pspbgmuphysics" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Физика Модм</a>
+                                    <a href="https://vk.com/sharkphys" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Акула Павлова</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-9 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🇬🇧</span>
+                                        <span>Английский язык</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/victoria_malkova" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Виктория Малкова</a>
+                                    <a href="https://vk.com/j.avrora" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Jya Avrora</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-10 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>✍️</span>
+                                        <span>Диктовка / Прочее</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <p class="text-center bg-white italic font-bold p-2">✨ Любой исполнитель по конкретной дисциплине может также подиктовать и выполнить различные виды услуг ✨</p>
+                                    <a href="https://vk.com/aivachai" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Андрей Айвазян</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-11 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>🎵</span>
+                                        <span>Написание альбома</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/djulikell.mark" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Регина Юсупова</a>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-hidden">
+                              <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-12 rounded-lg shadow-md">
+                                    <span class="flex items-center gap-2">
+                                        <span>📝</span>
+                                        <span>Тесты</span>
+                                    </span>
+                                    <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content p-2 bg-white space-y-1">
+                                    <a href="https://vk.com/kudrech" class="block text-center bg-gray-50 hover:bg-gray-200 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Артём Колотов</a>
+                                </div>
+                            </div>
+                            <p class="text-center italic text-gray-500 pt-2">📌 Продолжение следует...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,74 +289,362 @@
 
         <div class="mb-4 rounded-2xl shadow-xl p-1 course-gradient">
             <div class="rounded-xl overflow-hidden">
+
                 <div class="overflow-hidden">
                     <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none gradient-course-1 transition-all hover:brightness-110">
-                        1 КУРС <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                        1 КУРС
+                        <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
                     </button>
                     <div class="accordion-content px-4">
                         <div class="py-2">
                             <h3 class="font-bold text-lg text-center text-gray-800 my-2 p-2 bg-purple-100 rounded-lg">ОБЩИЕ ЧАТЫ</h3>
-                            <button data-link="tg://privatepost?channel=2246690930&msg_id=8078" class="tg-link-button justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"><span class="text-xl mr-3">📚</span> УЧЁБА (1 КУРС)</button>
-                            <button data-link="tg://privatepost?channel=2246690930&msg_id=2670" class="tg-link-button justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"><span class="text-xl mr-3">✍️</span> КОНТРОЛЬНЫЕ (1 КУРС)</button>
-                            <button data-link="tg://privatepost?channel=2246690930&msg_id=1865" class="tg-link-button justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"><span class="text-xl mr-3">🧾</span> ЛЕКЦИИ (1 КУРС)</button>
+                            <a href="https://t.me/c/2246690930/8078" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📚</span> УЧЁБА (1 КУРС)
+                            </a>
+                            <a href="https://t.me/c/2246690930/2670" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">✍️</span> КОНТРОЛЬНЫЕ (1 КУРС)
+                            </a>
+                            <a href="https://t.me/c/2246690930/1865" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧾</span> ЛЕКЦИИ (1 КУРС)
+                            </a>
                             
                             <h3 class="font-bold text-lg text-center text-gray-800 my-2 mt-4 p-2 bg-purple-100 rounded-lg">ПРЕДМЕТЫ</h3>
-                            <button data-link="tg://privatepost?channel=2246690930&msg_id=5" class="tg-link-button justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"><span class="text-xl mr-3">🫀</span> АНАТОМИЯ</button>
-                            <button data-link="tg://privatepost?channel=2246690930&msg_id=3" class="tg-link-button justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"><span class="text-xl mr-3">🧬</span> БИОЛОГИЯ</button>
-                            <button data-link="tg://privatepost?channel=2246690930&msg_id=7" class="tg-link-button justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"><span class="text-xl mr-3">🧪</span> ХИМИЯ</button>
-                            </div>
+                            <a href="https://t.me/c/2246690930/5" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🫀</span> АНАТОМИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/3" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧬</span> БИОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/7" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧪</span> ХИМИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/40" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧫</span> ГИСТОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/32" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📘</span> БАС
+                            </a>
+                            <a href="https://t.me/c/2246690930/13" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧲</span> ФИЗИКА / МОДМ
+                            </a>
+                            <a href="https://t.me/c/2246690930/27" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🖥</span> ИНФОРМАТИКА
+                            </a>
+                            <a href="https://t.me/c/2246690930/9" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧠</span> ПСИХОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/42" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">⚖️</span> ПРАВОВЕДЕНИЕ
+                            </a>
+                            <a href="https://t.me/c/2246690930/17" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📖</span> ИСТОРИЯ РОССИИ
+                            </a>
+                            <a href="https://t.me/c/2246690930/25" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📝</span> ИСТОРИЯ МЕДИЦИНЫ
+                            </a>
+                            <a href="https://t.me/c/2246690930/19" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📈</span> ЭКОНОМИКА
+                            </a>
+                            <a href="https://t.me/c/2246690930/23" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🇬🇧</span> АНГЛИЙСКИЙ ЯЗЫК
+                            </a>
+                            <a href="https://t.me/c/2246690930/1161" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">👩‍⚕️</span> ПРАКТИКА (КРОМЕ СТОМФАКА)
+                            </a>
+                            <a href="https://t.me/c/2246690930/34" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">⚗️</span> БИОХИМИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/15" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📚</span> ЛАТИНСКИЙ ЯЗЫК
+                            </a>
+                            <a href="https://t.me/c/2246690930/36" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🦺</span> БЖД
+                            </a>
+                            <a href="https://t.me/c/2246690930/11" class="flex items-center justify-center font-semibold bg-purple-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧑‍⚕️</span> ВВЕДЕНИЕ В СТОМАТОЛОГИЮ
+                            </a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="overflow-hidden">
+                    <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none gradient-course-2 transition-all hover:brightness-110">
+                        2 КУРС
+                        <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                    </button>
+                    <div class="accordion-content px-4">
+                        <div class="py-2">
+                             <h3 class="font-bold text-lg text-center text-gray-800 my-2 p-2 bg-blue-100 rounded-lg">ОБЩИЕ ЧАТЫ</h3>
+                            <a href="https://t.me/c/2246690930/144628" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📚</span> УЧЁБА (2 КУРС)
+                            </a>
+                            <a href="https://t.me/c/2246690930/144637" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">✍️</span> КОНТРОЛЬНЫЕ (2 КУРС)
+                            </a>
+                            <a href="https://t.me/c/2246690930/144643" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧾</span> ЛЕКЦИИ (2 КУРС)
+                            </a>
+                            <h3 class="font-bold text-lg text-center text-gray-800 my-2 mt-4 p-2 bg-blue-100 rounded-lg">ПРЕДМЕТЫ</h3>
+                            <a href="https://t.me/c/2246690930/5" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🫀</span> АНАТОМИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/144568" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧠</span> АНАТОМИЯ ШЕИ И ГОЛОВЫ (СТОМФАК)
+                            </a>
+                            <a href="https://t.me/c/2246690930/144203" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧬</span> ПАТОФИЗИОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/143923" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🔬</span> ПАТАН
+                            </a>
+                            <a href="https://t.me/c/2246690930/144277" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">💊</span> ФАРМАКОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/144106" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧼</span> ГИГИЕНА
+                            </a>
+                            <a href="https://t.me/c/2246690930/144297" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">❤️‍🩹</span> ФИЗИОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/451" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🦷</span> ПРОПЕДЕВТИКА (СТОМФАК)
+                            </a>
+                            <a href="https://t.me/c/2246690930/144144" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧍‍♂️</span> ТОПОГРАФИЧЕСКАЯ АНАТОМИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/144448" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧪</span> МИКРОБИОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/40" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧫</span> ГИСТОЛОГИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/34" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">⚗️</span> БИОХИМИЯ
+                            </a>
+                            <a href="https://t.me/c/2246690930/143888" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">📿</span> ФИЛОСОФИЯ И БИОЭТИКА
+                            </a>
+                            <a href="https://t.me/c/2246690930/144356" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🧩</span> ВНБ (СТОМФАК)
+                            </a>
+                            <a href="https://t.me/c/2246690930/144529" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🦷</span> ПРОФСТОМ (СТОМФАК)
+                            </a>
+                            <a href="https://t.me/c/2246690930/146079" class="flex items-center justify-center font-semibold bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">🛡</span> ИММУНОЛОГИЯ
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="overflow-hidden">
+                    <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none gradient-course-3 transition-all hover:brightness-110">
+                        3 КУРС
+                        <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                    </button>
+                    <div class="accordion-content px-4">
+                        <div class="py-2">
+                            <h3 class="font-bold text-lg text-center text-gray-800 my-2 p-2 bg-red-100 rounded-lg">ОБЩИЕ ЧАТЫ</h3>
+                            <a href="https://t.me/c/2246690930/151567" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">💬</span> БЕСЕДА (СТОМФАК)
+                            </a>
+                            <a href="https://t.me/c/2246690930/151561" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">💬</span> БЕСЕДА (ЛЕЧФАК)
+                            </a>
+                            
+                            <h3 class="font-bold text-lg text-center text-gray-800 my-4 p-2 bg-red-100 rounded-lg">РАЗДЕЛЕНИЕ ПО ФАКУЛЬТЕТАМ</h3>
+
+                            <div class="overflow-hidden rounded-t-xl">
+                                <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none faculty-gradient-1-stom hover:brightness-110 transition-all group-[.active]:rounded-b-none">
+                                    СТОМФАК
+                                    <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content px-4 py-2 bg-gray-100">
+                                    <h3 class="font-bold text-lg text-center text-gray-700 mt-2 mb-3">ПРЕДМЕТЫ СТОМФАК</h3>
+                                    <a href="https://t.me/c/2246690930/146734" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">👶</span> ПЕДИАТРИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146292" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🦷</span> ТЕРСТОМ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144529" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">😷</span> ПРОФСТОМ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144356" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧠</span> ВНБ (СТОМФАК)
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144106" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧼</span> ГИГИЕНА
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144203" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧬</span> ПАТОФИЗИОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146319" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🤰</span> АКУШЕРСТВО
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146709" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">⚕️</span> ОРГЗДРАВ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146131" class="flex items-center justify-center font-semibold bg-orange-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🔪</span> ОБЩАЯ ХИРУРГИЯ
+                                    </a>
+                                    <p class="text-gray-500 italic mt-4 text-center">Ссылки отсутствуют для: ХИРСТОМ, ОРТОПЕДИЯ, ПСИХИАТРИЯ</p>
+                                </div>
+                            </div>
+
+                            <div class="overflow-hidden rounded-b-xl">
+                                <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none faculty-gradient-1-lech hover:brightness-110 transition-all group-[.active]:rounded-b-none">
+                                    ЛЕЧФАК
+                                    <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content px-4 py-2 bg-gray-100">
+                                    <h3 class="font-bold text-lg text-center text-gray-700 mt-2 mb-3">ПРЕДМЕТЫ ЛЕЧФАК</h3>
+                                    <a href="https://t.me/c/2246690930/144106" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧼</span> ГИГИЕНА
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144448" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧪</span> МИКРОБИОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146117" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🩺</span> ЛУЧЕВАЯ ДИАГНОСТИКА
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146131" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🔪</span> ОБЩАЯ ХИРУРГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/143923" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧴</span> ПАТОЛОГИЧЕСКАЯ АНАТОМИЯ (ПАТАН)
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144203" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🛠</span> ПАТОФИЗИОЛОГИЯ (ПАТФИЗ)
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146196" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🏥</span> ПРОПЕДЕВТИКА
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146278" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">💉</span> ТРАНСФУЗИОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144277" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">💊</span> ФАРМАКОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/144144" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧍‍♂️</span> ТОПОГРАФИЧЕСКАЯ АНАТОМИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146079" class="flex items-center justify-center font-semibold bg-red-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🛡</span> ИММУНОЛОГИЯ
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-hidden">
+                    <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none gradient-course-4 transition-all hover:brightness-110">
+                        4 КУРС
+                        <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                    </button>
+                    <div class="accordion-content px-4">
+                        <div class="py-2">
+                            <h3 class="font-bold text-lg text-center text-gray-800 my-2 p-2 bg-green-100 rounded-lg">ОБЩИЕ ЧАТЫ</h3>
+                            <a href="https://t.me/c/2246690930/151969" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">💬</span> БЕСЕДА (ЛЕЧФАК)
+                            </a>
+                            <a href="https://t.me/c/2246690930/151971" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                <span class="text-xl mr-3">💬</span> БЕСЕДА (СТОМФАК)
+                            </a>
+                            
+                            <h3 class="font-bold text-lg text-center text-gray-800 my-4 p-2 bg-green-100 rounded-lg">РАЗДЕЛЕНИЕ ПО ФАКУЛЬТЕТАМ</h3>
+
+                            <div class="overflow-hidden rounded-t-xl">
+                                <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none faculty-gradient-2-lech hover:brightness-110 transition-all group-[.active]:rounded-b-none">
+                                    ЛЕЧФАК
+                                    <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content px-4 py-2 bg-gray-100">
+                                    <a href="https://t.me/c/2246690930/146319" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🤰</span> АКУШЕРСТВО
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146549" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧬</span> <span class="text-sm">МЕДИЦИНСКАЯ ГЕНЕТИКА</span>
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146580" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧘</span> МЕДИЦИНСКАЯ РЕАБИЛИТАЦИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146616" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧠</span> НЕВРОЛОГИЯ И НЕЙРОХИРУРГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146709" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🏥</span> ОРГЗДРАВ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146836" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">👂</span> ОТОРИНОЛАРИНГОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146895" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">👁</span> ОФТАЛЬМОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146734" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧒</span> ПЕДИАТРИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146954" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">💦</span> УРОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/147005" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🩺</span> ФАКУЛЬТЕТСКАЯ ТЕРАПИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/147115" class="flex items-center justify-center font-semibold bg-green-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🔧</span> ФАКУЛЬТЕТСКАЯ ХИРУРГИЯ
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="overflow-hidden rounded-b-xl">
+                                <button class="accordion-button group w-full flex items-center justify-center p-4 relative font-bold text-lg text-white focus:outline-none faculty-gradient-2-stom hover:brightness-110 transition-all group-[.active]:rounded-b-none">
+                                    СТОМФАК
+                                    <span class="accordion-arrow absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 group-[.active]:rotate-180">▼</span>
+                                </button>
+                                <div class="accordion-content px-4 py-2 bg-gray-100">
+                                    <a href="https://t.me/c/2246690930/146549" class="flex items-center justify-center font-semibold bg-teal-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧬</span> МЕДИЦИНСКАЯ ГЕНЕТИКА
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146616" class="flex items-center justify-center font-semibold bg-teal-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧠</span> НЕВРОЛОГИЯ И НЕЙРОХИРУРГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146580" class="flex items-center justify-center font-semibold bg-teal-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🧘</span> МЕДИЦИНСКАЯ РЕАБИЛИТАЦИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146709" class="flex items-center justify-center font-semibold bg-teal-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">🏥</span> ОРГЗДРАВ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146836" class="flex items-center justify-center font-semibold bg-teal-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">👂</span> ОТОРИНОЛАРИНГОЛОГИЯ
+                                    </a>
+                                    <a href="https://t.me/c/2246690930/146895" class="flex items-center justify-center font-semibold bg-teal-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                                        <span class="text-xl mr-3">👁</span> ОФТАЛЬМОЛОГИЯ
+                                    </a>
+                                    <p class="text-gray-500 italic mt-4 text-center">Ссылки отсутствуют для: ЧЛХ, ДЕТСКАЯ СТОМАТОЛОГИЯ, ТЕРСТОМ, ОРТОПЕДИЯ, ХИРСТОМ, ДЕРМАТОВЕНЕРОЛОГИЯ, ФТИЗИАТРИЯ, ИНФЕКЦИОННЫЕ БОЛЕЗНИ, ЭПИДЕМИОЛОГИЯ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
         
         <div class="mb-4 rounded-2xl shadow-xl p-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 animated-gradient transition-transform duration-300 hover:scale-105">
-            <button data-link="tg://privatepost?channel=2246690930&msg_id=150206" class="tg-link-button justify-center p-4 font-bold text-lg text-white bg-gray-900/80 backdrop-blur-sm rounded-xl transition-all duration-300 hover:bg-gray-900/70">
-                <span class="text-xl mr-3">🎓</span> ГОСЫ И АККРЕДИТАЦИЯ <span class="text-xl ml-3">🎓</span>
-            </button>
+            <a href="https://t.me/c/2246690930/150206" class="flex items-center justify-center p-4 font-bold text-lg text-white bg-gray-900/80 backdrop-blur-sm rounded-xl transition-all duration-300 hover:bg-gray-900/70">
+                <span class="text-xl mr-3">🎓</span>
+                ГОСЫ И АККРЕДИТАЦИЯ
+                <span class="text-xl ml-3">🎓</span>
+            </a>
         </div>
+        
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- ОБРАБОТКА ССЫЛОК TELEGRAM ---
-            if (window.Telegram && window.Telegram.WebApp) {
-                const tg = window.Telegram.WebApp;
-                tg.ready(); // Сообщаем, что приложение готово
-
-                // Обработчик для кнопок-ссылок Telegram
-                const handleTelegramLinkClick = (event) => {
-                    const link = event.currentTarget.getAttribute('data-link');
-                    if (link) {
-                        tg.openTelegramLink(link);
-                    }
-                };
-
-                const tgLinkButtons = document.querySelectorAll('.tg-link-button');
-                tgLinkButtons.forEach(button => {
-                    button.addEventListener('click', handleTelegramLinkClick);
-                });
-
-                // Обработчик для внешних ссылок (VK)
-                const handleExternalLinkClick = (event) => {
-                    event.preventDefault();
-                    const url = event.currentTarget.href;
-                    if (url) {
-                        tg.openLink(url);
-                    }
-                };
-                
-                const externalLinks = document.querySelectorAll('a[href*="vk.com"]');
-                externalLinks.forEach(link => {
-                    link.addEventListener('click', handleExternalLinkClick);
-                });
-
-            } else {
-                console.error("Telegram WebApp API не найдено.");
-            }
-
-            // --- КОД ДЛЯ АККОРДЕОНА (оставлен без изменений) ---
             const accordionButtons = document.querySelectorAll('.accordion-button');
+
             const updateParentHeight = (element, change) => {
                 let parent = element.parentElement.closest('.accordion-content');
                 while (parent) {
@@ -210,16 +655,23 @@
                     parent = parent.parentElement.closest('.accordion-content');
                 }
             };
+
             accordionButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.stopPropagation();
+
                     const content = button.nextElementSibling;
                     if (!content || !content.classList.contains('accordion-content')) return;
+
                     const contentScrollHeight = content.scrollHeight;
                     const isActive = button.classList.contains('active');
+                    
+                    // Закрываем другие аккордеоны на том же уровне
                     const parentContainer = button.parentElement.parentElement;
                     let siblingButtons = parentContainer.querySelectorAll(':scope > .overflow-hidden .accordion-button');
+
                     let parentToUpdate = button.closest('.accordion-content');
+
                     siblingButtons.forEach(btn => {
                         if (btn && btn !== button && btn.classList.contains('active')) {
                             const siblingContent = btn.nextElementSibling;
@@ -231,6 +683,8 @@
                             }
                         }
                     });
+
+                    // Открываем/закрываем текущий
                     if (!isActive) {
                         button.classList.add('active');
                         content.style.maxHeight = contentScrollHeight + "px";
