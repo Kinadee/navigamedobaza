@@ -724,31 +724,28 @@
     </script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.Telegram && window.Telegram.WebApp) {
-                const tg = window.Telegram.WebApp;
+document.addEventListener('DOMContentLoaded', () => {
+    // Check that the WebApp API is available
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
 
-                document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        // НЕ отменяем стандартное поведение, ссылка откроется в фоне
-                        
-                        // 1. Даем легкую вибрацию для подтверждения действия
-                        tg.HapticFeedback.notificationOccurred('success');
-
-                        // 2. Показываем всплывающее окно с инструкцией
-                        tg.showPopup({
-                            title: 'Готово!',
-                            message: 'Переход выполнен. Теперь вы можете свернуть это окно, чтобы увидеть сообщение.',
-                            buttons: [
-                                {type: 'ok', text: 'Понятно'}
-                            ]
-                        });
-
-                        // Команду tg.close() мы больше не вызываем
-                    });
-                });
-            }
+        // Find all links that lead to posts in a Telegram channel
+        document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevent the default link behavior to avoid double navigation
+                e.preventDefault(); 
+                
+                const url = link.getAttribute('href');
+                
+                // Use the special Telegram method to open links
+                tg.openTelegramLink(url);
+                
+                // Change this line to hide (collapse) the mini app instead of closing it
+                tg.hide(); 
+            });
         });
+    }
+});
     </script>
     </body>
 </html>
