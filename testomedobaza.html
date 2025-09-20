@@ -724,28 +724,28 @@
     </script>
     
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Check that the WebApp API is available
-    if (window.Telegram && window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
+        document.addEventListener('DOMContentLoaded', () => {
+            // Проверяем, что WebApp API доступен (код запущен внутри Telegram)
+            if (window.Telegram && window.Telegram.WebApp) {
+                const tg = window.Telegram.WebApp;
 
-        // Find all links that lead to posts in a Telegram channel
-        document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // Prevent the default link behavior to avoid double navigation
-                e.preventDefault(); 
-                
-                const url = link.getAttribute('href');
-                
-                // Use the special Telegram method to open links
-                tg.openTelegramLink(url);
-                
-                // Change this line to hide (collapse) the mini app instead of closing it
-                tg.hide(); 
-            });
+                // Находим все ссылки, которые ведут на посты в Telegram-канале
+                document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        // Отменяем стандартное поведение ссылки, чтобы избежать двойного перехода
+                        e.preventDefault(); 
+                        
+                        const url = link.getAttribute('href');
+                        
+                        // Используем специальный метод Telegram для открытия ссылок
+                        tg.openTelegramLink(url);
+                        
+                        // А затем отправляем команду на закрытие Mini App
+                        tg.close();
+                    });
+                });
+            }
         });
-    }
-});
     </script>
     </body>
 </html>
