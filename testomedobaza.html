@@ -725,23 +725,26 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Проверяем, что WebApp API доступен (код запущен внутри Telegram)
             if (window.Telegram && window.Telegram.WebApp) {
                 const tg = window.Telegram.WebApp;
 
-                // Находим все ссылки, которые ведут на посты в Telegram-канале
                 document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
                     link.addEventListener('click', (e) => {
-                        // Отменяем стандартное поведение ссылки, чтобы избежать двойного перехода
-                        e.preventDefault(); 
+                        // НЕ отменяем стандартное поведение, ссылка откроется в фоне
                         
-                        const url = link.getAttribute('href');
-                        
-                        // Используем специальный метод Telegram для открытия ссылок
-                        tg.openTelegramLink(url);
-                        
-                        // А затем отправляем команду на закрытие Mini App
-                        tg.close();
+                        // 1. Даем легкую вибрацию для подтверждения действия
+                        tg.HapticFeedback.notificationOccurred('success');
+
+                        // 2. Показываем всплывающее окно с инструкцией
+                        tg.showPopup({
+                            title: 'Готово!',
+                            message: 'Переход выполнен. Теперь вы можете свернуть это окно, чтобы увидеть сообщение.',
+                            buttons: [
+                                {type: 'ok', text: 'Понятно'}
+                            ]
+                        });
+
+                        // Команду tg.close() мы больше не вызываем
                     });
                 });
             }
