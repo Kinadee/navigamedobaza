@@ -724,37 +724,31 @@
         });
     </script>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Проверяем, что WebApp API доступен (код запущен внутри Telegram)
-            if (window.Telegram && window.Telegram.WebApp) {
-                const tg = window.Telegram.WebApp;
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Проверяем, что WebApp API доступен (код запущен внутри Telegram)
+        if (window.Telegram && window.Telegram.WebApp) {
+            const tg = window.Telegram.WebApp;
 
-                // Находим все ссылки, которые ведут на посты в Telegram-канале
-                document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        // Отменяем стандартное поведение ссылки, чтобы избежать двойного перехода
-                        e.preventDefault(); 
-                        
-                        const url = link.getAttribute('href');
-                        
-                        // Используем специальный метод Telegram для открытия ссылок
-                        tg.openTelegramLink(url);
+            // Находим все ссылки, которые ведут на посты в Telegram-канале
+            document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Используем стандартный способ открытия ссылки
+                    const url = link.getAttribute('href');
+                    window.open(url, '_blank');
 
-                        // 1. Даем легкую вибрацию для подтверждения действия
-                        tg.HapticFeedback.notificationOccurred('success');
-
-                        // 2. Показываем всплывающее окно с инструкцией
-                        tg.showPopup({
-                            title: 'Готово!',
-                            message: 'Переход выполнен. Теперь вы можете свернуть это окно, чтобы увидеть сообщение.',
-                            buttons: [
-                                {type: 'ok', text: 'Понятно'}
-                            ]                        
+                    // Показываем всплывающее окно с инструкцией
+                    tg.showPopup({
+                        title: 'Готово!',
+                        message: 'Переход выполнен. Теперь вы можете свернуть это окно, чтобы увидеть сообщение.',
+                        buttons: [
+                            {type: 'ok', text: 'Понятно'}
+                        ]
                     });
                 });
-            }
-        });
-    </script>
+            });
+        }
+    });
+</script>
     </body>
 </html>
