@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         body {
@@ -721,5 +722,30 @@
             });
         });
     </script>
-</body>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Проверяем, что WebApp API доступен (код запущен внутри Telegram)
+            if (window.Telegram && window.Telegram.WebApp) {
+                const tg = window.Telegram.WebApp;
+
+                // Находим все ссылки, которые ведут на посты в Telegram-канале
+                document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        // Отменяем стандартное поведение ссылки, чтобы избежать двойного перехода
+                        e.preventDefault(); 
+                        
+                        const url = link.getAttribute('href');
+                        
+                        // Используем специальный метод Telegram для открытия ссылок
+                        tg.openTelegramLink(url);
+                        
+                        // А затем отправляем команду на закрытие Mini App
+                        tg.close();
+                    });
+                });
+            }
+        });
+    </script>
+    </body>
 </html>
