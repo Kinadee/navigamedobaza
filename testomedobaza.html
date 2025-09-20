@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         body {
@@ -325,7 +324,6 @@
                                 </button>
                                 <div class="accordion-content bg-purple-100 rounded-b-2xl px-2">
                                     <div class="py-2 space-y-1">
-                                        <a href="https://t.me/c/2246690930/7" class="flex items-center justify-center font-semibold bg-purple-400 text-white rounded-full p-2 my-1 shadow-sm transition-all hover:bg-purple-500 hover:scale-[1.02]"><span class="mr-2">✨</span>ПЕРЕХОД В ТЕМУ</a>
                                         <a href="https://t.me/c/2246690930/7/534" class="flex items-center justify-center font-semibold bg-purple-400 text-white rounded-full p-2 my-1 shadow-sm transition-all hover:bg-purple-500 hover:scale-[1.02]"><span class="mr-2">🧾</span>ЛЕКЦИИ</a>
                                         <a href="https://t.me/c/2246690930/7/537" class="flex items-center justify-center font-semibold bg-purple-400 text-white rounded-full p-2 my-1 shadow-sm transition-all hover:bg-purple-500 hover:scale-[1.02]"><span class="mr-2">📖</span>МЕТОДИЧКИ</a>
                                         <a href="https://t.me/c/2246690930/7/542" class="flex items-center justify-center font-semibold bg-purple-400 text-white rounded-full p-2 my-1 shadow-sm transition-all hover:bg-purple-500 hover:scale-[1.02]"><span class="mr-2">📝</span>КОНСПЕКТЫ</a>
@@ -723,32 +721,5 @@
             });
         });
     </script>
-    
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Проверяем, что WebApp API доступен (код запущен внутри Telegram)
-        if (window.Telegram && window.Telegram.WebApp) {
-            const tg = window.Telegram.WebApp;
-
-            // Находим все ссылки, которые ведут на посты в Telegram-канале
-            document.querySelectorAll('a[href^="https://t.me/c/"]').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Используем стандартный способ открытия ссылки
-                    const url = link.getAttribute('href');
-                    window.open(url, '_blank');
-
-                    // Показываем всплывающее окно с инструкцией
-                    tg.showPopup({
-                        title: 'Готово!',
-                        message: 'Переход выполнен. Теперь вы можете свернуть это окно, чтобы увидеть сообщение.',
-                        buttons: [
-                            {type: 'ok', text: 'Понятно'}
-                        ]
-                    });
-                });
-            });
-        }
-    });
-</script>
-    </body>
+</body>
 </html>
