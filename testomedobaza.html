@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         body {
@@ -1041,79 +1040,74 @@
         
     </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const accordionButtons = document.querySelectorAll('.accordion-button');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
 
-        const updateParentHeight = (element, change) => {
-            let parent = element.parentElement.closest('.accordion-content');
-            while (parent) {
-                if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
-                    const currentHeight = parseInt(parent.style.maxHeight, 10);
-                    parent.style.maxHeight = (currentHeight + change) + "px";
+            const updateParentHeight = (element, change) => {
+                let parent = element.parentElement.closest('.accordion-content');
+                while (parent) {
+                    if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
+                        const currentHeight = parseInt(parent.style.maxHeight, 10);
+                        parent.style.maxHeight = (currentHeight + change) + "px";
+                    }
+                    parent = parent.parentElement.closest('.accordion-content');
                 }
-                parent = parent.parentElement.closest('.accordion-content');
-            }
-        };
+            };
 
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
 
-                const content = button.nextElementSibling;
-                if (!content || !content.classList.contains('accordion-content')) return;
+                    const content = button.nextElementSibling;
+                    if (!content || !content.classList.contains('accordion-content')) return;
 
-                const contentScrollHeight = content.scrollHeight;
-                const isActive = button.classList.contains('active');
-                
-                const parentContainer = button.parentElement.parentElement;
-                let siblingButtons;
+                    const contentScrollHeight = content.scrollHeight;
+                    const isActive = button.classList.contains('active');
+                    
+                    // Закрываем другие аккордеоны на том же уровне
+                    const parentContainer = button.parentElement.parentElement;
+                    let siblingButtons = Array.from(parentContainer.querySelectorAll(':scope > div > .accordion-button'));
+                    
+                    let parentToUpdate = button.closest('.accordion-content');
 
-                if (!button.parentElement.parentElement.classList.contains('accordion-content')) {
-                    siblingButtons = Array.from(parentContainer.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
-                } else {
-                    siblingButtons = Array.from(parentContainer.querySelectorAll(':scope > .my-2 > .accordion-button'));
-                }
+                    if (!button.parentElement.parentElement.classList.contains('accordion-content')) {
+                        // This is a top-level accordion button within a course or faculty section
+                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
+                    } else {
+                        // This is a nested accordion button
+                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .my-2 > .accordion-button'));
+                    }
 
-                siblingButtons.forEach(btn => {
-                    if (btn && btn !== button && btn.classList.contains('active')) {
-                        const siblingContent = btn.nextElementSibling;
-                        const siblingContentHeight = siblingContent.scrollHeight;
-                        btn.classList.remove('active');
-                        siblingContent.style.maxHeight = null;
-                        if (button.closest('.accordion-content')) {
-                           updateParentHeight(btn, -siblingContentHeight);
+                    siblingButtons.forEach(btn => {
+                        if (btn && btn !== button && btn.classList.contains('active')) {
+                            const siblingContent = btn.nextElementSibling;
+                            const siblingContentHeight = siblingContent.scrollHeight;
+                            btn.classList.remove('active');
+                            siblingContent.style.maxHeight = null;
+                            if (parentToUpdate) {
+                               updateParentHeight(btn, -siblingContentHeight);
+                            }
+                        }
+                    });
+
+                    // Открываем/закрываем текущий
+                    if (!isActive) {
+                        button.classList.add('active');
+                        content.style.maxHeight = contentScrollHeight + "px";
+                        if (parentToUpdate) {
+                           updateParentHeight(button, contentScrollHeight);
+                        }
+                    } else {
+                        button.classList.remove('active');
+                        content.style.maxHeight = null;
+                        if (parentToUpdate) {
+                           updateParentHeight(button, -contentScrollHeight);
                         }
                     }
                 });
-
-                if (!isActive) {
-                    button.classList.add('active');
-                    content.style.maxHeight = contentScrollHeight + "px";
-                    if (button.closest('.accordion-content')) {
-                       updateParentHeight(button, contentScrollHeight);
-                    }
-                } else {
-                    button.classList.remove('active');
-                    content.style.maxHeight = null;
-                    if (button.closest('.accordion-content')) {
-                       updateParentHeight(button, -contentScrollHeight);
-                    }
-                }
             });
         });
-
-        window.addEventListener('load', () => {
-            if (window.Telegram && window.Telegram.WebApp) {
-                const webApp = window.Telegram.WebApp;
-                webApp.expand();
-
-                setTimeout(() => {
-                    document.body.style.overflow = 'auto';
-                }, 100);
-            }
-        });
-    });
-</script>
+    </script>
 </body>
 </html>
