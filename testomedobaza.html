@@ -79,6 +79,28 @@
         .faculty-gradient-1-lech { background: linear-gradient(45deg, #ef4444, #f43f5e); }
         .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
         .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
+
+		/* ===== ДИЗАЙН КНОПОК ИСПОЛНИТЕЛЕЙ С РАМКОЙ ===== */
+        .executor-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem; /* 8px */
+            background-color: #f3f4f6; /* gray-100 */
+            color: #1f2937; /* gray-800 */
+            font-weight: 600; /* semibold */
+            text-decoration: none;
+            border: 1px solid #e5e7eb; /* Рамка (gray-200) */
+            transition: all 0.3s ease;
+        }
+        .executor-button:hover {
+            background-color: #4a76a8; /* VK Brand Color */
+            color: #ffffff;
+            border-color: #4a76a8; /* Рамка в цвет фона при наведении */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px -2px rgba(74, 118, 168, 0.4);
+        }
     </style>
 </head>
 <body class="p-4 bg-gray-100">
@@ -131,11 +153,13 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
+                                <div class="accordion-content p-2 bg-white space-y-3">
                                     <p class="text-center bg-white font-bold p-2">Рефераты, НИРс, отчёты, аннотации, доклады, конспекты и эссе по профильным/непрофильным предметам (истории, медицине, правоведению, экономике, философии, психологии, анатомии и др.)</p>
-                                    <a href="https://vk.com/ulyanov_helper" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Александр Ульянов</a>
-                                    <a href="https://vk.com/dashapmed" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Дарья Бакланова</a>
-                                    <a href="https://vk.com/kruzenshternmed" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Александр Крузенштерн</a>
+                                    <div class="space-y-2">
+                                        <a href="https://vk.com/ulyanov_helper" class="executor-button">Александр Ульянов</a>
+                                        <a href="https://vk.com/dashapmed" class="executor-button">Дарья Бакланова</a>
+                                        <a href="https://vk.com/kruzenshternmed" class="executor-button">Александр Крузенштерн</a>
+                                    </div>
                                  </div>
                             </div>
     
@@ -147,10 +171,10 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/bio_med_helpstudents" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Инфузория Туфелька</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
-                                    <a href="https://vk.com/ethereal1917" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Диана Шаповалова</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/bio_med_helpstudents" class="executor-button">Инфузория Туфелька</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
+                                    <a href="https://vk.com/ethereal1917" class="executor-button">Диана Шаповалова</a>
                                 </div>
                             </div>
                             
@@ -162,10 +186,10 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/chemistrypavlova" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Лис Химический</a>
-                                    <a href="https://vk.com/e.himik" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Эрик Химик</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/chemistrypavlova" class="executor-button">Лис Химический</a>
+                                    <a href="https://vk.com/e.himik" class="executor-button">Эрик Химик</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
                                 </div>
                             </div>
     
@@ -177,9 +201,9 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/bmw513" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Марина Владимировна</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/bmw513" class="executor-button">Марина Владимировна</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
                                 </div>
                             </div>
                             
@@ -191,9 +215,9 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/m.pavlova011" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Мария Павлова</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/m.pavlova011" class="executor-button">Мария Павлова</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
                                 </div>
                             </div>
                             
@@ -205,10 +229,10 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/m.krutel" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Маша Крутель</a>
-                                    <a href="https://vk.com/sergeeva_mashik" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Маша Сергеева</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/m.krutel" class="executor-button">Маша Крутель</a>
+                                    <a href="https://vk.com/sergeeva_mashik" class="executor-button">Маша Сергеева</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
                                 </div>
                             </div>
                             
@@ -220,9 +244,9 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/evelina_yurevna" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Эвелина Гончарова</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/evelina_yurevna" class="executor-button">Эвелина Гончарова</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
                                 </div>
                             </div>
                             
@@ -234,10 +258,10 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/pspbgmuphysics" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Физика Модм</a>
-                                    <a href="https://vk.com/sharkphys" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Акула Павлова</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/pspbgmuphysics" class="executor-button">Физика Модм</a>
+                                    <a href="https://vk.com/sharkphys" class="executor-button">Акула Павлова</a>
+                                    <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
                                 </div>
                             </div>
                             
@@ -249,9 +273,9 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/victoria_malkova" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Виктория Малкова</a>
-                                    <a href="https://vk.com/j.avrora" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Jya Avrora</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/victoria_malkova" class="executor-button">Виктория Малкова</a>
+                                    <a href="https://vk.com/j.avrora" class="executor-button">Jya Avrora</a>
                                 </div>
                             </div>
                             
@@ -263,10 +287,12 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <p class="text-center bg-white font-bold p-2">Любой исполнитель по конкретной дисциплине может также подиктовать и выполнить различные виды услуг</p>
-                                    <a href="https://vk.com/aivachai" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Андрей Айвазян</a>
-                                    <a href="https://vk.com/privetmed_pomogalov" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Privetmed Pomogalov</a>
+                                <div class="accordion-content p-2 bg-white space-y-3">
+                                    <p class="text-center text-sm font-medium text-gray-600 p-2">Любой исполнитель по конкретной дисциплине может также подиктовать и выполнить различные виды услуг</p>
+                                    <div class="space-y-2">
+                                        <a href="https://vk.com/aivachai" class="executor-button">Андрей Айвазян</a>
+                                        <a href="https://vk.com/privetmed_pomogalov" class="executor-button">Privetmed Pomogalov</a>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -278,8 +304,8 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/djulikell.mark" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Регина Юсупова</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/djulikell.mark" class="executor-button">Регина Юсупова</a>
                                 </div>
                             </div>
                             
@@ -291,8 +317,8 @@
                                     </span>
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
-                                <div class="accordion-content p-2 bg-white space-y-1">
-                                    <a href="https://vk.com/kudrech" class="block text-center bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-all hover:scale-[1.02] font-medium text-blue-600 hover:underline shadow-sm">Артём Колотов</a>
+                                <div class="accordion-content p-2 bg-white space-y-2">
+                                    <a href="https://vk.com/kudrech" class="executor-button">Артём Колотов</a>
                                 </div>
                             </div>
                             <p class="text-center italic text-gray-500 pt-2">📌 Продолжение следует...</p>
@@ -301,7 +327,6 @@
                 </div>
             </div>
         </div>
-
         <div class="mb-4 rounded-2xl shadow-xl p-1 course-gradient">
             <div class="rounded-xl overflow-hidden">
 
