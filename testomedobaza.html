@@ -1343,107 +1343,147 @@
     </div>
 
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- КОД ДЛЯ АККОРДЕОНА (остаётся без изменений) ---
-            const accordionButtons = document.querySelectorAll('.accordion-button');
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- КОД ДЛЯ АККОРДЕОНА ---
+        const accordionButtons = document.querySelectorAll('.accordion-button');
 
-            const updateParentHeight = (element, change) => {
-                let parent = element.parentElement.closest('.accordion-content');
-                while (parent) {
-                    if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
-                        const currentHeight = parseInt(parent.style.maxHeight, 10);
-                        parent.style.maxHeight = (currentHeight + change) + "px";
-                    }
-                    parent = parent.parentElement.closest('.accordion-content');
+        const updateParentHeight = (element, change) => {
+            let parent = element.parentElement.closest('.accordion-content');
+            while (parent) {
+                if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
+                    const currentHeight = parseInt(parent.style.maxHeight, 10);
+                    parent.style.maxHeight = (currentHeight + change) + "px";
                 }
-            };
+                parent = parent.parentElement.closest('.accordion-content');
+            }
+        };
 
-            accordionButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const content = button.nextElementSibling;
-                    if (!content || !content.classList.contains('accordion-content')) return;
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const content = button.nextElementSibling;
+                if (!content || !content.classList.contains('accordion-content')) return;
 
-                    const contentScrollHeight = content.scrollHeight;
-                    const isActive = button.classList.contains('active');
-                    
-                    const parentContainer = button.parentElement.parentElement;
-                    let siblingButtons;
-                    let parentToUpdate = button.closest('.accordion-content');
+                const contentScrollHeight = content.scrollHeight;
+                const isActive = button.classList.contains('active');
+                
+                const parentContainer = button.parentElement.parentElement;
+                let siblingButtons;
+                let parentToUpdate = button.closest('.accordion-content');
 
-                    if (!button.parentElement.parentElement.classList.contains('accordion-content')) {
-                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
-                    } else {
-                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .my-2 > .accordion-button'));
-                    }
+                if (!button.parentElement.parentElement.classList.contains('accordion-content')) {
+                    siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
+                } else {
+                    siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .my-2 > .accordion-button'));
+                }
 
-                    siblingButtons.forEach(btn => {
-                        if (btn && btn !== button && btn.classList.contains('active')) {
-                            const siblingContent = btn.nextElementSibling;
-                            const siblingContentHeight = siblingContent.scrollHeight;
-                            btn.classList.remove('active');
-                            siblingContent.style.maxHeight = null;
-                            if (parentToUpdate) {
-                               updateParentHeight(btn, -siblingContentHeight);
-                            }
-                        }
-                    });
-
-                    if (!isActive) {
-                        button.classList.add('active');
-                        content.style.maxHeight = contentScrollHeight + "px";
+                siblingButtons.forEach(btn => {
+                    if (btn && btn !== button && btn.classList.contains('active')) {
+                        const siblingContent = btn.nextElementSibling;
+                        const siblingContentHeight = siblingContent.scrollHeight;
+                        btn.classList.remove('active');
+                        siblingContent.style.maxHeight = null;
                         if (parentToUpdate) {
-                           updateParentHeight(button, contentScrollHeight);
-                        }
-                    } else {
-                        button.classList.remove('active');
-                        content.style.maxHeight = null;
-                        if (parentToUpdate) {
-                           updateParentHeight(button, -contentScrollHeight);
+                           updateParentHeight(btn, -siblingContentHeight);
                         }
                     }
                 });
-            });
 
-            // --- КОД ДЛЯ ИНИЦИАЛИЗАЦИИ СЛАЙДЕРОВ (перенесен сюда) ---
-            showSlide('carousel-dekanat', 0);
-            showSlide('carousel-contacts', 0);
+                if (!isActive) {
+                    button.classList.add('active');
+                    content.style.maxHeight = contentScrollHeight + "px";
+                    if (parentToUpdate) {
+                       updateParentHeight(button, contentScrollHeight);
+                    }
+                } else {
+                    button.classList.remove('active');
+                    content.style.maxHeight = null;
+                    if (parentToUpdate) {
+                       updateParentHeight(button, -contentScrollHeight);
+                    }
+                }
+            });
         });
 
-        // --- КОД ДЛЯ УПРАВЛЕНИЯ СЛАЙДЕРАМИ (остаётся снаружи) ---
-        const carousels = {
-            'carousel-dekanat': { currentIndex: 0 },
-            'carousel-contacts': { currentIndex: 0 }
+        // --- КОД ДЛЯ СВАЙПА СЛАЙДЕРОВ ---
+        const enableSwipe = (carouselId) => {
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const swipeThreshold = 50; // Минимальное расстояние свайпа в пикселях
+
+            carousel.addEventListener('touchstart', (event) => {
+                // Запоминаем начальную координату касания
+                touchStartX = event.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (event) => {
+                // Запоминаем конечную координату
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            const handleSwipe = () => {
+                const swipeDistance = touchEndX - touchStartX;
+                
+                // Если свайп был достаточно длинным
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    if (swipeDistance < 0) {
+                        // Свайп влево -> следующий слайд
+                        nextSlide(carouselId);
+                    } else {
+                        // Свайп вправо -> предыдущий слайд
+                        prevSlide(carouselId);
+                    }
+                }
+            };
         };
 
-        function showSlide(carouselId, index) {
-            const carousel = document.getElementById(carouselId);
-            const inner = carousel.querySelector('.carousel-inner');
-            const items = carousel.querySelectorAll('.carousel-item');
-            const totalItems = items.length;
-            const state = carousels[carouselId];
+        // --- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ И АКТИВАЦИЯ СВАЙПА ---
+        showSlide('carousel-dekanat', 0);
+        showSlide('carousel-contacts', 0);
+        
+        // Активируем свайп для каждого слайдера
+        enableSwipe('carousel-dekanat');
+        enableSwipe('carousel-contacts');
+    });
 
-            if (index >= totalItems) {
-                state.currentIndex = 0;
-            } else if (index < 0) {
-                state.currentIndex = totalItems - 1;
-            } else {
-                state.currentIndex = index;
-            }
+    // --- УПРАВЛЕНИЕ СЛАЙДЕРАМИ ---
+    const carousels = {
+        'carousel-dekanat': { currentIndex: 0 },
+        'carousel-contacts': { currentIndex: 0 }
+    };
 
-            const offset = -state.currentIndex * 100;
-            inner.style.transform = `translateX(${offset}%)`;
+    function showSlide(carouselId, index) {
+        const carousel = document.getElementById(carouselId);
+        const inner = carousel.querySelector('.carousel-inner');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+        const state = carousels[carouselId];
+
+        if (index >= totalItems) {
+            state.currentIndex = 0;
+        } else if (index < 0) {
+            state.currentIndex = totalItems - 1;
+        } else {
+            state.currentIndex = index;
         }
 
-        function nextSlide(carouselId) {
-            const state = carousels[carouselId];
-            showSlide(carouselId, state.currentIndex + 1);
-        }
+        const offset = -state.currentIndex * 100;
+        inner.style.transform = `translateX(${offset}%)`;
+    }
 
-        function prevSlide(carouselId) {
-            const state = carousels[carouselId];
-            showSlide(carouselId, state.currentIndex - 1);
-        }
-    </script>
+    function nextSlide(carouselId) {
+        const state = carousels[carouselId];
+        showSlide(carouselId, state.currentIndex + 1);
+    }
+
+    function prevSlide(carouselId) {
+        const state = carousels[carouselId];
+        showSlide(carouselId, state.currentIndex - 1);
+    }
+</script>
 </body>
 </html>
