@@ -175,16 +175,16 @@
     <div id="carousel-dekanat" class="carousel">
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="dekanat/photo1.jpg" alt="Расписание 1">
+                <img src="dekanat/photo1.jpg" alt="Расписание 1" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="dekanat/photo2.jpg" alt="Расписание 2">
+                <img src="dekanat/photo2.jpg" alt="Расписание 2" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="dekanat/photo3.jpg" alt="Расписание 3">
+                <img src="dekanat/photo3.jpg" alt="Расписание 3" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="dekanat/photo4.jpg" alt="Расписание 4">
+                <img src="dekanat/photo4.jpg" alt="Расписание 4" draggable="false">
             </div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide('carousel-dekanat')">&#10094;</button>
@@ -196,25 +196,25 @@
     <div id="carousel-contacts" class="carousel">
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="contacts/contact1.jpg" alt="Контакты 1">
+                <img src="contacts/contact1.jpg" alt="Контакты 1" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="contacts/contact2.jpg" alt="Контакты 2">
+                <img src="contacts/contact2.jpg" alt="Контакты 2" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="contacts/contact3.jpg" alt="Контакты 3">
+                <img src="contacts/contact3.jpg" alt="Контакты 3" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="contacts/contact4.jpg" alt="Контакты 4">
+                <img src="contacts/contact4.jpg" alt="Контакты 4" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="contacts/contact5.jpg" alt="Контакты 5">
+                <img src="contacts/contact5.jpg" alt="Контакты 5" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="contacts/contact6.jpg" alt="Контакты 6">
+                <img src="contacts/contact6.jpg" alt="Контакты 6" draggable="false">
             </div>
             <div class="carousel-item">
-                <img src="contacts/contact7.jpg" alt="Контакты 7">
+                <img src="contacts/contact7.jpg" alt="Контакты 7" draggable="false">
             </div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide('carousel-contacts')">&#10094;</button>
@@ -1412,42 +1412,49 @@
 
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; // Минимальное расстояние свайпа в пикселях
+            const swipeThreshold = 50; 
 
             carousel.addEventListener('touchstart', (event) => {
-                // Запоминаем начальную координату касания
                 touchStartX = event.changedTouches[0].screenX;
             }, { passive: true });
 
             carousel.addEventListener('touchend', (event) => {
-                // Запоминаем конечную координату
                 touchEndX = event.changedTouches[0].screenX;
                 handleSwipe();
             });
 
             const handleSwipe = () => {
                 const swipeDistance = touchEndX - touchStartX;
-                
-                // Если свайп был достаточно длинным
                 if (Math.abs(swipeDistance) > swipeThreshold) {
                     if (swipeDistance < 0) {
-                        // Свайп влево -> следующий слайд
                         nextSlide(carouselId);
                     } else {
-                        // Свайп вправо -> предыдущий слайд
                         prevSlide(carouselId);
                     }
                 }
             };
         };
+        
+        // --- НОВЫЙ КОД ДЛЯ ЗАПРЕТА КОПИРОВАНИЯ ---
+        const disableImageActions = (elementId) => {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            // Запрещаем вызов контекстного меню (правый клик / долгое нажатие)
+            element.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+        };
 
-        // --- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ И АКТИВАЦИЯ СВАЙПА ---
+        // --- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ И ВСЕХ ФУНКЦИЙ ---
         showSlide('carousel-dekanat', 0);
         showSlide('carousel-contacts', 0);
         
-        // Активируем свайп для каждого слайдера
         enableSwipe('carousel-dekanat');
         enableSwipe('carousel-contacts');
+        
+        disableImageActions('carousel-dekanat');
+        disableImageActions('carousel-contacts');
     });
 
     // --- УПРАВЛЕНИЕ СЛАЙДЕРАМИ ---
