@@ -5,205 +5,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            background-color: white;
-        }
-        /* Стили для кастомных цветов заголовков */
-        .header-color-1 { background-color: #ef4444; color: white; } /* red-500 */
-        .header-color-2 { background-color: #f97316; color: white; } /* orange-500 */
-        .header-color-3 { background-color: #eab308; color: white; } /* yellow-500 */
-        .header-color-4 { background-color: #22c55e; color: white; } /* green-500 */
-        .header-color-5 { background-color: #0ea5e9; color: white; } /* sky-500 */
-        .header-color-6 { background-color: #6366f1; color: white; } /* indigo-500 */
-        .header-color-7 { background-color: #a855f7; color: white; } /* purple-500 */
-        .header-color-8 { background-color: #ec4899; color: white; } /* pink-500 */
-        .header-color-9 { background-color: #14b8a6; color: white; } /* teal-500 */
-        .header-color-10 { background-color: #f43f5e; color: white; } /* rose-500 */
-        .header-color-11 { background-color: #3b82f6; color: white; } /* blue-500 */
-        .header-color-12 { background-color: #d946ef; color: white; } /* fuchsia-500 */
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f0f4f8;
+    }
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        background-color: white;
+    }
+    /* Стили для кастомных цветов заголовков */
+    .header-color-1 { background-color: #ef4444; color: white; } /* red-500 */
+    .header-color-2 { background-color: #f97316; color: white; } /* orange-500 */
+    .header-color-3 { background-color: #eab308; color: white; } /* yellow-500 */
+    .header-color-4 { background-color: #22c55e; color: white; } /* green-500 */
+    .header-color-5 { background-color: #0ea5e9; color: white; } /* sky-500 */
+    .header-color-6 { background-color: #6366f1; color: white; } /* indigo-500 */
+    .header-color-7 { background-color: #a855f7; color: white; } /* purple-500 */
+    .header-color-8 { background-color: #ec4899; color: white; } /* pink-500 */
+    .header-color-9 { background-color: #14b8a6; color: white; } /* teal-500 */
+    .header-color-10 { background-color: #f43f5e; color: white; } /* rose-500 */
+    .header-color-11 { background-color: #3b82f6; color: white; } /* blue-500 */
+    .header-color-12 { background-color: #d946ef; color: white; } /* fuchsia-500 */
 
-        /* ===== CSS ДЛЯ АНИМАЦИИ ГРАДИЕНТА ===== */
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animated-gradient {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient-animation 4s ease infinite;
-        }
-       	.rainbow-gradient {
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #00ff00, #0000ff, #4b0082, #9400d3);
-            background-size: 400% 400%;
-            animation: gradient-animation 8s ease infinite;
-        }
-        .course-gradient {
-            background: linear-gradient(-45deg, #7c3aed, #5b21b6, #3b82f6, #0ea5e9, #9333ea, #c084fc);
-            background-size: 400% 400%;
-            animation: gradient-animation 4s ease infinite;
-        }
-		.purple-gradient {
-            background: linear-gradient(-45deg, #8b5cf6, #d946ef, #6366f1, #a855f7);
-            background-size: 400% 400%;
-            animation: gradient-animation 8s ease infinite;
-		}
-		.blue-gradient {
-	    background: linear-gradient(-45deg, #2563eb, #3b82f6, #581c87, #60a5fa, #0ea5e9);
-	    background-size: 400% 400%;
-	    animation: gradient-animation 6s ease infinite;
-		}
-		.green-gradient {
-            background: linear-gradient(-45deg, #22c55e, #84cc16, #16a34a, #4ade80);
-            background-size: 400% 400%;
-            animation: gradient-animation 4s ease infinite;
-        }
+    /* ===== CSS ДЛЯ АНИМАЦИИ ГРАДИЕНТА ===== */
+    @keyframes gradient-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .animated-gradient {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient-animation 4s ease infinite;
+    }
+    .rainbow-gradient {
+        background: linear-gradient(90deg, #ff0000, #ff7f00, #00ff00, #0000ff, #4b0082, #9400d3);
+        background-size: 400% 400%;
+        animation: gradient-animation 8s ease infinite;
+    }
+    .course-gradient {
+        background: linear-gradient(-45deg, #7c3aed, #5b21b6, #3b82f6, #0ea5e9, #9333ea, #c084fc);
+        background-size: 400% 400%;
+        animation: gradient-animation 4s ease infinite;
+    }
+    .purple-gradient {
+        background: linear-gradient(-45deg, #8b5cf6, #d946ef, #6366f1, #a855f7);
+        background-size: 400% 400%;
+        animation: gradient-animation 8s ease infinite;
+    }
+    .blue-gradient {
+    background: linear-gradient(-45deg, #2563eb, #3b82f6, #581c87, #60a5fa, #0ea5e9);
+    background-size: 400% 400%;
+    animation: gradient-animation 6s ease infinite;
+    }
+    .green-gradient {
+        background: linear-gradient(-45deg, #22c55e, #84cc16, #16a34a, #4ade80);
+        background-size: 400% 400%;
+        animation: gradient-animation 4s ease infinite;
+    }
 
-        /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК КУРСОВ ===== */
-        .gradient-course-1 { background: linear-gradient(45deg, #a855f7, #6366f1); }
-        .gradient-course-2 { background: linear-gradient(45deg, #3b82f6, #0ea5e9); }
-        .gradient-course-3 { background: linear-gradient(45deg, #ef4444, #f97316); }
-        .gradient-course-4 { background: linear-gradient(45deg, #22c55e, #14b8a6); }
-        
-        /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК ФАКУЛЬТЕТОВ ===== */
-        .faculty-gradient-1-stom { background: linear-gradient(45deg, #f97316, #eab308); }
-        .faculty-gradient-1-lech { background: linear-gradient(45deg, #ef4444, #f43f5e); }
-        .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
-        .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
+    /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК КУРСОВ ===== */
+    .gradient-course-1 { background: linear-gradient(45deg, #a855f7, #6366f1); }
+    .gradient-course-2 { background: linear-gradient(45deg, #3b82f6, #0ea5e9); }
+    .gradient-course-3 { background: linear-gradient(45deg, #ef4444, #f97316); }
+    .gradient-course-4 { background: linear-gradient(45deg, #22c55e, #14b8a6); }
+    
+    /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК ФАКУЛЬТЕТОВ ===== */
+    .faculty-gradient-1-stom { background: linear-gradient(45deg, #f97316, #eab308); }
+    .faculty-gradient-1-lech { background: linear-gradient(45deg, #ef4444, #f43f5e); }
+    .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
+    .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
 
-		/* ===== ДИЗАЙН КНОПОК ИСПОЛНИТЕЛЕЙ С РАМКОЙ ===== */
-        .executor-button {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 0.8rem 1rem;
-            border-radius: 0.5rem; /* 8px */
-            background-color: #f3f4f6; /* gray-100 */
-            color: #1f2937; /* gray-800 */
-            font-weight: 600; /* semibold */
-            text-decoration: none;
-            border: 1px solid #e5e7eb; /* Рамка (gray-200) */
-            transition: all 0.3s ease;
-        }
-        .executor-button:hover {
-            background-color: #0177ff; /* VK Brand Color */
-            color: #ffffff;
-            border-color: #5c3298; /* Рамка в цвет фона при наведении */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px -2px rgba(74, 118, 168, 0.4);
-        }
-        /* ===== СТИЛИ ДЛЯ СЛАЙДЕРА-КАРУСЕЛИ ===== */
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem; /* 12px */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem;
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10+ */
-            user-select: none; /* Standard */
-        }
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-        .carousel-item img {
-            width: 100%;
-            display: block;
-            border-radius: 0.75rem;
-            cursor: zoom-in; /* */
-        }
+    /* ===== ДИЗАЙН КНОПОК ИСПОЛНИТЕЛЕЙ С РАМКОЙ ===== */
+    .executor-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem 1rem;
+        border-radius: 0.5rem; /* 8px */
+        background-color: #f3f4f6; /* gray-100 */
+        color: #1f2937; /* gray-800 */
+        font-weight: 600; /* semibold */
+        text-decoration: none;
+        border: 1px solid #e5e7eb; /* Рамка (gray-200) */
+        transition: all 0.3s ease;
+    }
+    .executor-button:hover {
+        background-color: #0177ff; /* VK Brand Color */
+        color: #ffffff;
+        border-color: #5c3298; /* Рамка в цвет фона при наведении */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px -2px rgba(74, 118, 168, 0.4);
+    }
+    /* ===== СТИЛИ ДЛЯ СЛАЙДЕРА-КАРУСЕЛИ ===== */
+    .carousel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.75rem; /* 12px */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        margin-top: 1rem;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard */
+    }
+    .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+    .carousel-item img {
+        width: 100%;
+        display: block;
+        border-radius: 0.75rem;
+        cursor: zoom-in;
+        /* Добавляем анимацию */
+        animation: pulse-zoom 4s ease-in-out infinite;
+    }
 
-        /* ===== НОВЫЙ КОД ДЛЯ БЛОКИРОВКИ ЗАЖАТИЯ ИЗОБРАЖЕНИЙ ===== */
-        .carousel img {
-            /* */
-            -webkit-touch-callout: none; /* Запрещает вызов меню в Safari (iOS) */
-        }
+    /* ===== БЛОКИРОВКА ЗАЖАТИЯ ИЗОБРАЖЕНИЙ ===== */
+    .carousel img {
+        -webkit-touch-callout: none; /* Запрещает вызов меню в Safari (iOS) */
+    }
 
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.1);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-radius: 9999px; /* full */
-            font-size: 1.25rem; /* 20px */
-            font-weight: bold;
-            z-index: 10;
-            transition: background-color 0.3s ease;
-        }
-        .carousel-btn:hover {
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        .carousel-btn.prev {
-            left: 0.5rem;
-        }
-        .carousel-btn.next {
-            right: 0.5rem;
-        }
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.1);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 9999px; /* full */
+        font-size: 1.25rem; /* 20px */
+        font-weight: bold;
+        z-index: 10;
+        transition: background-color 0.3s ease;
+    }
+    .carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .carousel-btn.prev {
+        left: 0.5rem;
+    }
+    .carousel-btn.next {
+        right: 0.5rem;
+    }
 
-        /* */
-        .modal {
-            display: none; /* По умолчанию скрыто */
-            position: fixed; /* Поверх всего */
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Позволяет прокручивать, если изображение очень большое */
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
+    /* ===== АНИМАЦИЯ ПУЛЬСАЦИИ ДЛЯ ИЗОБРАЖЕНИЙ ===== */
+    @keyframes pulse-zoom {
+        0% {
+            transform: scale(1);
         }
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90vh;
-            -webkit-user-select: none; /* Запрет выделения */
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none; /* Запрет контекстного меню на iOS */
+        50% {
+            transform: scale(1.02);
         }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1001;
+        100% {
+            transform: scale(1);
         }
-        .close-modal:hover,
-        .close-modal:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-        /* Класс для отображения модального окна */
-        .modal-visible {
-            display: flex;
-        }
-        /* */
-    </style>
+    }
+
+    /* ===== СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (ЛАЙТБОКС) ===== */
+    .modal {
+        display: none; /* По умолчанию скрыто */
+        position: fixed; /* Поверх всего */
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 90%;
+        max-height: 90vh;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .close-modal:hover,
+    .close-modal:focus {
+        color: #bbb;
+        text-decoration: none;
+    }
+    .modal-visible {
+        display: flex;
+    }
+</style>
 </head>
 <body class="p-4 bg-gray-100">
 
