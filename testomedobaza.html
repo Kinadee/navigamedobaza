@@ -131,8 +131,8 @@
 
     /* ===== БЛОКИРОВКА ЗАЖАТИЯ ИЗОБРАЖЕНИЙ ===== */
     .carousel img {
-        -webkit-touch-callout: none; /* Запрещает вызов меню в Safari (iOS) */
-    }
+        -webkit-touch-callout: none; /* Запрещает вызов меню в Safari (iOS) */  
+	}
 
     .carousel-btn {
         position: absolute;
@@ -1522,6 +1522,14 @@
         const closeBtn = document.querySelector('.close-modal');
         const carouselImages = document.querySelectorAll('.carousel-item img');
 
+        // Запрет вызова контекстного меню (правый клик/долгое нажатие) на всех изображениях в слайдерах
+        carouselImages.forEach(img => {
+            img.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+        });
+        // ================== КОНЕЦ ВСТАВКИ ==================
+		
         // Открытие модального окна при клике на любое изображение в карусели
         carouselImages.forEach(img => {
             img.addEventListener('click', function() {
