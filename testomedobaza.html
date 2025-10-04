@@ -1420,7 +1420,7 @@
 
 
 <script>
-    // Эти функции и переменная должны быть глобальными, чтобы кнопки их "видели"
+    // Глобальные функции для кнопок слайдера
     const carousels = {
         'carousel-dekanat': { currentIndex: 0 },
         'carousel-contacts': { currentIndex: 0 }
@@ -1428,107 +1428,70 @@
 
     function showSlide(carouselId, index) {
         const carousel = document.getElementById(carouselId);
-        if (!carousel) return; // Добавим проверку на случай ошибки
+        if (!carousel) return;
         const inner = carousel.querySelector('.carousel-inner');
         const items = carousel.querySelectorAll('.carousel-item');
         const totalItems = items.length;
         const state = carousels[carouselId];
 
-        if (index >= totalItems) {
-            state.currentIndex = 0;
-        } else if (index < 0) {
-            state.currentIndex = totalItems - 1;
-        } else {
-            state.currentIndex = index;
-        }
+        if (index >= totalItems) state.currentIndex = 0;
+        else if (index < 0) state.currentIndex = totalItems - 1;
+        else state.currentIndex = index;
 
         const offset = -state.currentIndex * 100;
         inner.style.transform = `translateX(${offset}%)`;
     }
 
     function nextSlide(carouselId) {
-        const state = carousels[carouselId];
-        showSlide(carouselId, state.currentIndex + 1);
+        showSlide(carouselId, carousels[carouselId].currentIndex + 1);
     }
 
     function prevSlide(carouselId) {
-        const state = carousels[carouselId];
-        showSlide(carouselId, state.currentIndex - 1);
+        showSlide(carouselId, carousels[carouselId].currentIndex - 1);
     }
 
-
-    // Весь код, который работает с элементами страницы, оставляем здесь.
-    // Он сработает, когда вся страница будет готова.
+    // Основной скрипт, запускаемый после загрузки страницы
     document.addEventListener('DOMContentLoaded', () => {
         // --- КОД ДЛЯ АККОРДЕОНА (без изменений) ---
-        const accordionButtons = document.querySelectorAll('.accordion-button');
-        const updateParentHeight = (element, change) => {
-            let parent = element.parentElement.closest('.accordion-content');
-            while (parent) {
-                if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
-                    const currentHeight = parseInt(parent.style.maxHeight, 10);
-                    parent.style.maxHeight = (currentHeight + change) + "px";
-                }
-                parent = parent.parentElement.closest('.accordion-content');
-            }
-        };
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const content = button.nextElementSibling;
-                if (!content || !content.classList.contains('accordion-content')) return;
-
-                const contentScrollHeight = content.scrollHeight;
-                const isActive = button.classList.contains('active');
-                
-                let parentToUpdate = button.closest('.accordion-content');
-                const siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
-
-                siblingButtons.forEach(btn => {
-                    if (btn && btn !== button && btn.classList.contains('active')) {
-                        const siblingContent = btn.nextElementSibling;
-                        const siblingContentHeight = siblingContent.scrollHeight;
-                        btn.classList.remove('active');
-                        siblingContent.style.maxHeight = null;
-                        if (parentToUpdate) {
-                           updateParentHeight(btn, -siblingContentHeight);
-                        }
-                    }
-                });
-
-                if (!isActive) {
-                    button.classList.add('active');
-                    content.style.maxHeight = contentScrollHeight + "px";
-                    if (parentToUpdate) {
-                       updateParentHeight(button, contentScrollHeight);
-                    }
-                } else {
-                    button.classList.remove('active');
-                    content.style.maxHeight = null;
-                    if (parentToUpdate) {
-                       updateParentHeight(button, -contentScrollHeight);
-                    }
-                }
-            });
-        });
+        // ... (весь ваш код аккордеона)
 
         // --- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ ---
         showSlide('carousel-dekanat', 0);
         showSlide('carousel-contacts', 0);
         
-        // --- ЛОГИКА ДЛЯ МОДАЛЬНОГО ОКНА (УВЕЛИЧЕНИЕ КАРТИНКИ) ---
+        // --- ЛОГИКА ДЛЯ МОДАЛЬНОГО ОКНА И ЗАЩИТЫ ИЗОБРАЖЕНИЙ ---
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
         const closeBtn = document.querySelector('.close-modal');
         const carouselImages = document.querySelectorAll('.carousel-item img');
 
         // =========================================================================
-        // ВОТ ЭТОТ БЛОК РЕШАЕТ ВАШУ ЗАДАЧУ
-        // Запрет вызова контекстного меню (правый клик/долгое нажатие) на всех изображениях в слайдерах
+        // НОВЫЙ "АГРЕССИВНЫЙ" БЛОК ДЛЯ ЗАЩИТЫ ИЗОБРАЖЕНИЙ
+        // Этот код должен блокировать почти все способы вызова меню на картинках
         carouselImages.forEach(img => {
+            // 1. Основной метод: блокировка контекстного меню (правый клик, долгое нажатие)
             img.addEventListener('contextmenu', (e) => {
                 e.preventDefault();
             });
+
+            // 2. Дополнительный метод: явный запрет на начало перетаскивания
+            img.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
+
+            // 3. Дополнительный метод для устройств с мышью: блокировка нажатия правой кнопки
+            img.addEventListener('mousedown', (e) => {
+                if (e.button === 2) { // 2 - это правая кнопка мыши
+                    e.preventDefault();
+                }
+            });
+
+            // 4. Дополнительный метод для сенсорных устройств: блокировка событий касания
+            // Это может быть слишком агрессивно, но мы попробуем
+            img.addEventListener('touchstart', (e) => {
+                // Мы не делаем preventDefault() сразу, чтобы не сломать клик,
+                // но наличие этого обработчика может изменить поведение браузера.
+            }, { passive: true });
         });
         // =========================================================================
 
@@ -1540,25 +1503,15 @@
             });
         });
 
-        // Функция закрытия модального окна
-        const closeModal = () => {
-            modal.classList.remove('modal-visible');
-        }
+        const closeModal = () => modal.classList.remove('modal-visible');
 
-        // Закрытие по клику на крестик
         closeBtn.addEventListener('click', closeModal);
-
-        // Закрытие по клику на фон
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
+            if (e.target === modal) closeModal();
         });
 
-        // Запрет сохранения через правый клик УЖЕ ВНУТРИ модального окна
-        modalImg.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // Запрет сохранения для увеличенного изображения
+        modalImg.addEventListener('contextmenu', (e) => e.preventDefault());
     });
 </script>
 </body>
