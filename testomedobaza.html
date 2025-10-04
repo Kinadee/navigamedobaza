@@ -1420,140 +1420,136 @@
 
 
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- КОД ДЛЯ АККОРДЕОНА (остаётся без изменений) ---
-            const accordionButtons = document.querySelectorAll('.accordion-button');
+    // Эти функции и переменная должны быть глобальными, чтобы кнопки их "видели"
+    const carousels = {
+        'carousel-dekanat': { currentIndex: 0 },
+        'carousel-contacts': { currentIndex: 0 }
+    };
 
-            const updateParentHeight = (element, change) => {
-                let parent = element.parentElement.closest('.accordion-content');
-                while (parent) {
-                    if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
-                        const currentHeight = parseInt(parent.style.maxHeight, 10);
-                        parent.style.maxHeight = (currentHeight + change) + "px";
-                    }
-                    parent = parent.parentElement.closest('.accordion-content');
+    function showSlide(carouselId, index) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return; // Добавим проверку на случай ошибки
+        const inner = carousel.querySelector('.carousel-inner');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+        const state = carousels[carouselId];
+
+        if (index >= totalItems) {
+            state.currentIndex = 0;
+        } else if (index < 0) {
+            state.currentIndex = totalItems - 1;
+        } else {
+            state.currentIndex = index;
+        }
+
+        const offset = -state.currentIndex * 100;
+        inner.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide(carouselId) {
+        const state = carousels[carouselId];
+        showSlide(carouselId, state.currentIndex + 1);
+    }
+
+    function prevSlide(carouselId) {
+        const state = carousels[carouselId];
+        showSlide(carouselId, state.currentIndex - 1);
+    }
+
+
+    // Весь код, который работает с элементами страницы, оставляем здесь.
+    // Он сработает, когда вся страница будет готова.
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- КОД ДЛЯ АККОРДЕОНА (без изменений) ---
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        const updateParentHeight = (element, change) => {
+            let parent = element.parentElement.closest('.accordion-content');
+            while (parent) {
+                if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
+                    const currentHeight = parseInt(parent.style.maxHeight, 10);
+                    parent.style.maxHeight = (currentHeight + change) + "px";
                 }
-            };
-
-            accordionButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const content = button.nextElementSibling;
-                    if (!content || !content.classList.contains('accordion-content')) return;
-
-                    const contentScrollHeight = content.scrollHeight;
-                    const isActive = button.classList.contains('active');
-                    
-                    const parentContainer = button.parentElement.parentElement;
-                    let siblingButtons;
-                    let parentToUpdate = button.closest('.accordion-content');
-
-                    if (!button.parentElement.parentElement.classList.contains('accordion-content')) {
-                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
-                    } else {
-                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .my-2 > .accordion-button'));
-                    }
-
-                    siblingButtons.forEach(btn => {
-                        if (btn && btn !== button && btn.classList.contains('active')) {
-                            const siblingContent = btn.nextElementSibling;
-                            const siblingContentHeight = siblingContent.scrollHeight;
-                            btn.classList.remove('active');
-                            siblingContent.style.maxHeight = null;
-                            if (parentToUpdate) {
-                               updateParentHeight(btn, -siblingContentHeight);
-                            }
-                        }
-                    });
-
-                    if (!isActive) {
-                        button.classList.add('active');
-                        content.style.maxHeight = contentScrollHeight + "px";
-                        if (parentToUpdate) {
-                           updateParentHeight(button, contentScrollHeight);
-                        }
-                    } else {
-                        button.classList.remove('active');
-                        content.style.maxHeight = null;
-                        if (parentToUpdate) {
-                           updateParentHeight(button, -contentScrollHeight);
-                        }
-                    }
-                });
-            });
-
-            // --- КОД ДЛЯ ИНИЦИАЛИЗАЦИИ СЛАЙДЕРОВ (остаётся без изменений) ---
-            showSlide('carousel-dekanat', 0);
-            showSlide('carousel-contacts', 0);
-            
-            // const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const closeBtn = document.querySelector('.close-modal');
-            const carouselImages = document.querySelectorAll('.carousel-item img');
-
-            // Открытие модального окна при клике на любое изображение в карусели
-            carouselImages.forEach(img => {
-                img.addEventListener('click', function() {
-                    modal.classList.add('modal-visible');
-                    modalImg.src = this.src;
-                });
-            });
-
-            // Функция закрытия модального окна
-            const closeModal = () => {
-                modal.classList.remove('modal-visible');
+                parent = parent.parentElement.closest('.accordion-content');
             }
-
-            // Закрытие по клику на крестик
-            closeBtn.addEventListener('click', closeModal);
-
-            // Закрытие по клику на фон
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Запрет сохранения через правый клик
-            modalImg.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-            });
-            // });
-
-        // --- КОД ДЛЯ УПРАВЛЕНИЯ СЛАЙДЕРАМИ (остаётся без изменений) ---
-        const carousels = {
-            'carousel-dekanat': { currentIndex: 0 },
-            'carousel-contacts': { currentIndex: 0 }
         };
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const content = button.nextElementSibling;
+                if (!content || !content.classList.contains('accordion-content')) return;
 
-        function showSlide(carouselId, index) {
-            const carousel = document.getElementById(carouselId);
-            const inner = carousel.querySelector('.carousel-inner');
-            const items = carousel.querySelectorAll('.carousel-item');
-            const totalItems = items.length;
-            const state = carousels[carouselId];
+                const contentScrollHeight = content.scrollHeight;
+                const isActive = button.classList.contains('active');
+                
+                let parentToUpdate = button.closest('.accordion-content');
+                const siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
 
-            if (index >= totalItems) {
-                state.currentIndex = 0;
-            } else if (index < 0) {
-                state.currentIndex = totalItems - 1;
-            } else {
-                state.currentIndex = index;
+                siblingButtons.forEach(btn => {
+                    if (btn && btn !== button && btn.classList.contains('active')) {
+                        const siblingContent = btn.nextElementSibling;
+                        const siblingContentHeight = siblingContent.scrollHeight;
+                        btn.classList.remove('active');
+                        siblingContent.style.maxHeight = null;
+                        if (parentToUpdate) {
+                           updateParentHeight(btn, -siblingContentHeight);
+                        }
+                    }
+                });
+
+                if (!isActive) {
+                    button.classList.add('active');
+                    content.style.maxHeight = contentScrollHeight + "px";
+                    if (parentToUpdate) {
+                       updateParentHeight(button, contentScrollHeight);
+                    }
+                } else {
+                    button.classList.remove('active');
+                    content.style.maxHeight = null;
+                    if (parentToUpdate) {
+                       updateParentHeight(button, -contentScrollHeight);
+                    }
+                }
+            });
+        });
+
+        // --- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ ---
+        showSlide('carousel-dekanat', 0);
+        showSlide('carousel-contacts', 0);
+        
+        // --- ЛОГИКА ДЛЯ МОДАЛЬНОГО ОКНА (УВЕЛИЧЕНИЕ КАРТИНКИ) ---
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close-modal');
+        const carouselImages = document.querySelectorAll('.carousel-item img');
+
+        // Открытие модального окна при клике на любое изображение в карусели
+        carouselImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.classList.add('modal-visible');
+                modalImg.src = this.src;
+            });
+        });
+
+        // Функция закрытия модального окна
+        const closeModal = () => {
+            modal.classList.remove('modal-visible');
+        }
+
+        // Закрытие по клику на крестик
+        closeBtn.addEventListener('click', closeModal);
+
+        // Закрытие по клику на фон
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
             }
+        });
 
-            const offset = -state.currentIndex * 100;
-            inner.style.transform = `translateX(${offset}%)`;
-        }
-
-        function nextSlide(carouselId) {
-            const state = carousels[carouselId];
-            showSlide(carouselId, state.currentIndex + 1);
-        }
-
-        function prevSlide(carouselId) {
-            const state = carousels[carouselId];
-            showSlide(carouselId, state.currentIndex - 1);
-        }
-    </script>
+        // Запрет сохранения через правый клик
+        modalImg.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+    });
+</script>
 </body>
 </html>
