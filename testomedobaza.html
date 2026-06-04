@@ -13,28 +13,25 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #e8eef5;
-            background-image: radial-gradient(circle at 20% 20%, rgba(99,102,241,0.07) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, rgba(14,165,233,0.07) 0%, transparent 50%);
             min-height: 100vh;
         }
 
         /* ===== АККОРДЕОН ===== */
+        /* Переход управляется JS — не CSS */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
             background-color: white;
         }
 
         /* ===== СТРЕЛКА АККОРДЕОНА ===== */
         .accordion-arrow {
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s ease;
             display: inline-block;
         }
         .accordion-button.active .accordion-arrow {
             transform: translateY(-50%) rotate(180deg) !important;
         }
-        /* Для стрелок вне контекста translateY */
         .accordion-button.active .accordion-arrow.no-translate {
             transform: rotate(180deg) !important;
         }
@@ -204,8 +201,8 @@
             font-size: 1.1rem;
             font-weight: bold;
             z-index: 10;
-            transition: background-color 0.2s ease, transform 0.15s ease;
             line-height: 1;
+            transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.4s ease;
         }
         .carousel-btn:hover {
             background-color: rgba(0, 0, 0, 0.55);
@@ -226,6 +223,7 @@
             display: flex;
             gap: 5px;
             z-index: 10;
+            transition: opacity 0.4s ease;
         }
         .carousel-dot {
             width: 7px;
@@ -240,6 +238,12 @@
             background-color: white;
             transform: scale(1.3);
             box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+        /* Гасим контролы */
+        .carousel.controls-hidden .carousel-btn,
+        .carousel.controls-hidden .carousel-dots {
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* ===== КНОПКА «НАВЕРХ» ===== */
@@ -270,15 +274,10 @@
             transform: translateY(0) scale(1);
             pointer-events: auto;
         }
-        #btn-to-top:hover {
-            box-shadow: 0 6px 20px rgba(99,102,241,0.65);
-            transform: translateY(-2px) scale(1.05);
-        }
-        #btn-to-top:active {
-            transform: scale(0.95);
-        }
+        #btn-to-top:hover { box-shadow: 0 6px 20px rgba(99,102,241,0.65); transform: translateY(-2px) scale(1.05); }
+        #btn-to-top:active { transform: scale(0.95); }
 
-        /* ===== RIPPLE-ЭФФЕКТ НА КНОПКАХ ===== */
+        /* ===== RIPPLE-ЭФФЕКТ ===== */
         .accordion-button {
             position: relative;
             overflow: hidden;
@@ -287,36 +286,64 @@
             position: absolute;
             border-radius: 50%;
             transform: scale(0);
-            animation: ripple-anim 0.55s linear;
-            background-color: rgba(255,255,255,0.3);
+            animation: ripple-anim 0.5s linear;
+            background-color: rgba(255,255,255,0.28);
             pointer-events: none;
         }
-        @keyframes ripple-anim {
-            to { transform: scale(4); opacity: 0; }
+        @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+
+        /* ===== УЛУЧШЕННАЯ ЧИТАЕМОСТЬ ЗАГОЛОВКОВ ===== */
+        /* Подзаголовки секций внутри аккордеона */
+        .accordion-content h3 {
+            letter-spacing: 0.04em;
+            font-size: 0.82rem !important;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+        /* Красивее выглядят контейнеры для субсекций */
+        .accordion-content .bg-purple-100,
+        .accordion-content .bg-blue-100,
+        .accordion-content .bg-red-100,
+        .accordion-content .bg-gray-100 {
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        /* Серые заметки «ссылки отсутствуют» */
+        .accordion-content p.italic {
+            font-size: 0.78rem;
+            background: rgba(0,0,0,0.03);
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-left: 3px solid #d1d5db;
+            text-align: left !important;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        /* Инструкция «На Android» */
+        .accordion-content > div > p.font-semibold {
+            background: linear-gradient(135deg, #f0f4ff, #e8f4fd);
+            border-radius: 0.6rem;
+            border: 1px solid #bfdbfe;
+            font-size: 0.82rem;
+            color: #1e40af;
+            padding: 0.6rem 0.75rem !important;
+        }
+        /* Заголовки вложенных блоков (ОСНОВНЫЕ ФАЙЛЫ, ЗАЧЁТЫ и т.п.) */
+        .accordion-content .bg-blue-200 h3,
+        .accordion-content .bg-purple-200 h3,
+        .accordion-content .bg-blue-300 h4,
+        .accordion-content .bg-purple-300 h4 {
+            font-size: 0.78rem !important;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
         }
 
-        /* ===== УЛУЧШЕННЫЙ ЗАГОЛОВОК ===== */
+        /* ===== ЗАГОЛОВОК ===== */
         h1.main-title {
-            letter-spacing: 0.04em;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            letter-spacing: 0.05em;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        /* ===== ПЛАВНОЕ ПОЯВЛЕНИЕ ===== */
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(12px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .container > div {
-            animation: fade-in-up 0.4s ease both;
-        }
-        .container > div:nth-child(1) { animation-delay: 0.05s; }
-        .container > div:nth-child(2) { animation-delay: 0.10s; }
-        .container > div:nth-child(3) { animation-delay: 0.15s; }
-        .container > div:nth-child(4) { animation-delay: 0.20s; }
-    </style>
 </head>
 <body class="p-4 bg-gray-100">
 
