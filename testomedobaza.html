@@ -7,53 +7,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
-        /* ===== БАЗОВЫЕ СТИЛИ ===== */
-        * { box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e8eef5;
-            min-height: 100vh;
+            background-color: #f0f4f8;
         }
-
-        /* ===== АККОРДЕОН ===== */
-        /* Переход управляется JS — не CSS */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
             background-color: white;
         }
+        /* Стили для кастомных цветов заголовков */
+        .header-color-1 { background-color: #ef4444; color: white; } /* red-500 */
+        .header-color-2 { background-color: #f97316; color: white; } /* orange-500 */
+        .header-color-3 { background-color: #eab308; color: white; } /* yellow-500 */
+        .header-color-4 { background-color: #22c55e; color: white; } /* green-500 */
+        .header-color-5 { background-color: #0ea5e9; color: white; } /* sky-500 */
+        .header-color-6 { background-color: #6366f1; color: white; } /* indigo-500 */
+        .header-color-7 { background-color: #a855f7; color: white; } /* purple-500 */
+        .header-color-8 { background-color: #ec4899; color: white; } /* pink-500 */
+        .header-color-9 { background-color: #14b8a6; color: white; } /* teal-500 */
+        .header-color-10 { background-color: #f43f5e; color: white; } /* rose-500 */
+        .header-color-11 { background-color: #3b82f6; color: white; } /* blue-500 */
+        .header-color-12 { background-color: #d946ef; color: white; } /* fuchsia-500 */
 
-        /* ===== СТРЕЛКА АККОРДЕОНА ===== */
-        .accordion-arrow {
-            transition: transform 0.2s ease;
-            display: inline-block;
-        }
-        .accordion-button.active .accordion-arrow {
-            transform: translateY(-50%) rotate(180deg) !important;
-        }
-        .accordion-button.active .accordion-arrow.no-translate {
-            transform: rotate(180deg) !important;
-        }
-
-        /* ===== ЦВЕТА ЗАГОЛОВКОВ ===== */
-        .header-color-1  { background-color: #ef4444; color: white; }
-        .header-color-2  { background-color: #f97316; color: white; }
-        .header-color-3  { background-color: #eab308; color: white; }
-        .header-color-4  { background-color: #22c55e; color: white; }
-        .header-color-5  { background-color: #0ea5e9; color: white; }
-        .header-color-6  { background-color: #6366f1; color: white; }
-        .header-color-7  { background-color: #a855f7; color: white; }
-        .header-color-8  { background-color: #ec4899; color: white; }
-        .header-color-9  { background-color: #14b8a6; color: white; }
-        .header-color-10 { background-color: #f43f5e; color: white; }
-        .header-color-11 { background-color: #3b82f6; color: white; }
-        .header-color-12 { background-color: #d946ef; color: white; }
-
-        /* ===== АНИМАЦИИ ГРАДИЕНТОВ ===== */
+        /* ===== CSS ДЛЯ АНИМАЦИИ ГРАДИЕНТА ===== */
         @keyframes gradient-animation {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
         .animated-gradient {
@@ -61,8 +42,8 @@
             background-size: 400% 400%;
             animation: gradient-animation 4s ease infinite;
         }
-        .rainbow-gradient {
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+       	.rainbow-gradient {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #00ff00, #0000ff, #4b0082, #9400d3);
             background-size: 400% 400%;
             animation: gradient-animation 8s ease infinite;
         }
@@ -71,17 +52,17 @@
             background-size: 400% 400%;
             animation: gradient-animation 4s ease infinite;
         }
-        .purple-gradient {
+		.purple-gradient {
             background: linear-gradient(-45deg, #8b5cf6, #d946ef, #6366f1, #a855f7);
             background-size: 400% 400%;
             animation: gradient-animation 8s ease infinite;
-        }
-        .blue-gradient {
-            background: linear-gradient(-45deg, #2563eb, #3b82f6, #581c87, #60a5fa, #0ea5e9);
-            background-size: 400% 400%;
-            animation: gradient-animation 6s ease infinite;
-        }
-        .green-gradient {
+		}
+		.blue-gradient {
+	    background: linear-gradient(-45deg, #2563eb, #3b82f6, #581c87, #60a5fa, #0ea5e9);
+	    background-size: 400% 400%;
+	    animation: gradient-animation 6s ease infinite;
+		}
+		.green-gradient {
             background: linear-gradient(-45deg, #22c55e, #84cc16, #16a34a, #4ade80);
             background-size: 400% 400%;
             animation: gradient-animation 4s ease infinite;
@@ -92,263 +73,95 @@
         .gradient-course-2 { background: linear-gradient(45deg, #3b82f6, #0ea5e9); }
         .gradient-course-3 { background: linear-gradient(45deg, #ef4444, #f97316); }
         .gradient-course-4 { background: linear-gradient(45deg, #22c55e, #14b8a6); }
-
+        
         /* ===== ГРАДИЕНТЫ ДЛЯ КНОПОК ФАКУЛЬТЕТОВ ===== */
         .faculty-gradient-1-stom { background: linear-gradient(45deg, #f97316, #eab308); }
         .faculty-gradient-1-lech { background: linear-gradient(45deg, #ef4444, #f43f5e); }
         .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
         .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
 
-        /* ===== КНОПКИ ИСПОЛНИТЕЛЕЙ ===== */
+		/* ===== ДИЗАЙН КНОПОК ИСПОЛНИТЕЛЕЙ С РАМКОЙ ===== */
         .executor-button {
             display: block;
             width: 100%;
             text-align: center;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            background-color: #f9fafb;
-            color: #1f2937;
-            font-weight: 600;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem; /* 8px */
+            background-color: #f3f4f6; /* gray-100 */
+            color: #1f2937; /* gray-800 */
+            font-weight: 600; /* semibold */
             text-decoration: none;
-            border: 1.5px solid #e5e7eb;
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid #e5e7eb; /* Рамка (gray-200) */
+            transition: all 0.3s ease;
         }
         .executor-button:hover {
-            background-color: #0177ff;
+            background-color: #0177ff; /* VK Brand Color */
             color: #ffffff;
-            border-color: transparent;
+            border-color: #5c3298; /* Рамка в цвет фона при наведении */
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px -4px rgba(1,119,255,0.45);
+            box-shadow: 0 4px 10px -2px rgba(74, 118, 168, 0.4);
         }
-        .executor-button:active {
-            transform: translateY(0px);
-        }
-
-        /* ===== КАРУСЕЛЬ ===== */
+        /* ===== СТИЛИ ДЛЯ СЛАЙДЕРА-КАРУСЕЛИ ===== */
         .carousel {
             position: relative;
             overflow: hidden;
-            border-radius: 0.875rem;
-            box-shadow: 0 8px 24px -4px rgba(0,0,0,0.15), 0 2px 8px -2px rgba(0,0,0,0.08);
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -webkit-touch-callout: none;
-            touch-action: pan-y;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard */
         }
         .carousel-inner {
             display: flex;
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-        }
-        .carousel-inner.no-transition {
-            transition: none;
+            transition: transform 0.5s ease-in-out;
         }
         .carousel-item {
             min-width: 100%;
+            box-sizing: border-box;
         }
         .carousel-item img {
             width: 100%;
             display: block;
-            border-radius: 0.875rem;
-            pointer-events: none;
-            -webkit-touch-callout: none;
-            -webkit-user-drag: none;
-            user-drag: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        /* Прозрачный оверлей поверх изображений — перехватывает все события */
-        .carousel-item {
-            position: relative;
-        }
-        .carousel-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            -webkit-touch-callout: none;
-            user-select: none;
-        }
-        .carousel-placeholder {
-            width: 100%;
-            min-height: 180px;
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.875rem;
-            color: #94a3b8;
-            font-size: 0.875rem;
+            border-radius: 0.75rem;
         }
 
-        /* ===== КНОПКИ КАРУСЕЛИ ===== */
+        /* ===== НОВЫЙ КОД ДЛЯ БЛОКИРОВКИ ЗАЖАТИЯ ИЗОБРАЖЕНИЙ ===== */
+        .carousel img {
+            pointer-events: none; /* Делает изображение 'прозрачным' для нажатий */
+            -webkit-touch-callout: none; /* Запрещает вызов меню в Safari (iOS) */
+        }
+
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.28);
-            backdrop-filter: blur(4px);
-            color: white;
-            border: 1.5px solid rgba(255,255,255,0.3);
-            padding: 0.45rem 0.85rem;
-            cursor: pointer;
-            border-radius: 9999px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            z-index: 10;
-            line-height: 1;
-            transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.4s ease;
-        }
-        .carousel-btn:hover {
-            background-color: rgba(0, 0, 0, 0.55);
-            transform: translateY(-50%) scale(1.08);
-        }
-        .carousel-btn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-        .carousel-btn.prev { left: 0.5rem; }
-        .carousel-btn.next { right: 0.5rem; }
-
-        /* ===== ТОЧКИ-ИНДИКАТОРЫ КАРУСЕЛИ ===== */
-        .carousel-dots {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5px;
-            z-index: 10;
-            transition: opacity 0.4s ease;
-        }
-        .carousel-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
-            border: 1px solid rgba(255,255,255,0.7);
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .carousel-dot.active {
-            background-color: white;
-            transform: scale(1.3);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        }
-        /* Гасим контролы */
-        .carousel.controls-hidden .carousel-btn,
-        .carousel.controls-hidden .carousel-dots {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* ===== КНОПКА «НАВЕРХ» ===== */
-        #btn-to-top {
-            position: fixed;
-            bottom: 1.25rem;
-            right: 1.25rem;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #0ea5e9);
+            background-color: rgba(0, 0, 0, 0.1);
             color: white;
             border: none;
-            font-size: 1.25rem;
+            padding: 0.5rem 1rem;
             cursor: pointer;
-            box-shadow: 0 4px 14px rgba(99,102,241,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(16px) scale(0.85);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 1000;
-            pointer-events: none;
+            border-radius: 9999px; /* full */
+            font-size: 1.25rem; /* 20px */
+            font-weight: bold;
+            z-index: 10;
+            transition: background-color 0.3s ease;
         }
-        #btn-to-top.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.4);
         }
-        #btn-to-top:hover { box-shadow: 0 6px 20px rgba(99,102,241,0.65); transform: translateY(-2px) scale(1.05); }
-        #btn-to-top:active { transform: scale(0.95); }
-
-        /* ===== RIPPLE-ЭФФЕКТ ===== */
-        .accordion-button {
-            position: relative;
-            overflow: hidden;
+        .carousel-btn.prev {
+            left: 0.5rem;
         }
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple-anim 0.5s linear;
-            background-color: rgba(255,255,255,0.28);
-            pointer-events: none;
+        .carousel-btn.next {
+            right: 0.5rem;
         }
-        @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
-
-        /* ===== УЛУЧШЕННАЯ ЧИТАЕМОСТЬ ЗАГОЛОВКОВ ===== */
-        /* Подзаголовки секций внутри аккордеона */
-        .accordion-content h3 {
-            letter-spacing: 0.04em;
-            font-size: 0.82rem !important;
-            text-transform: uppercase;
-            opacity: 0.85;
-        }
-        /* Красивее выглядят контейнеры для субсекций */
-        .accordion-content .bg-purple-100,
-        .accordion-content .bg-blue-100,
-        .accordion-content .bg-red-100,
-        .accordion-content .bg-gray-100 {
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-        /* Серые заметки «ссылки отсутствуют» */
-        .accordion-content p.italic {
-            font-size: 0.78rem;
-            background: rgba(0,0,0,0.03);
-            border-radius: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            border-left: 3px solid #d1d5db;
-            text-align: left !important;
-            color: #6b7280;
-            line-height: 1.5;
-        }
-        /* Инструкция «На Android» */
-        .accordion-content > div > p.font-semibold {
-            background: linear-gradient(135deg, #f0f4ff, #e8f4fd);
-            border-radius: 0.6rem;
-            border: 1px solid #bfdbfe;
-            font-size: 0.82rem;
-            color: #1e40af;
-            padding: 0.6rem 0.75rem !important;
-        }
-        /* Заголовки вложенных блоков (ОСНОВНЫЕ ФАЙЛЫ, ЗАЧЁТЫ и т.п.) */
-        .accordion-content .bg-blue-200 h3,
-        .accordion-content .bg-purple-200 h3,
-        .accordion-content .bg-blue-300 h4,
-        .accordion-content .bg-purple-300 h4 {
-            font-size: 0.78rem !important;
-            letter-spacing: 0.05em;
-            opacity: 0.8;
-        }
-
-        /* ===== ЗАГОЛОВОК ===== */
-        h1.main-title {
-            letter-spacing: 0.05em;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    </style>
 </head>
 <body class="p-4 bg-gray-100">
 
     <div class="container mx-auto max-w-lg">
-        <h1 class="main-title text-5xl font-extrabold text-center my-6 bg-clip-text text-transparent rainbow-gradient">МЕДОБАЗА</h1>
+        <h1 class="text-5xl font-extrabold text-center my-6 bg-clip-text text-transparent rainbow-gradient">МЕДОБАЗА</h1>
 
         <div class="mb-4 rounded-2xl shadow-xl p-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 animated-gradient">
             <div class="bg-white rounded-xl p-4">
@@ -367,8 +180,7 @@
                 </a>
                 <a href="https://t.me/c/2246690930/119577" class="flex items-center justify-between bg-blue-500 text-white rounded-full p-3 my-2 shadow-md transition-all hover:scale-105 hover:shadow-xl">
                     <span class="text-xl">🚨</span> <span class="text-center flex-grow">СРОЧНЫЕ ЗАПРОСЫ - РАЗЛИЧНОГО ВИДА ПРОСЬБЫ</span> <span class="text-xl">🚨</span>
-                </a>
-                <a href="https://t.me/+SNgo0XO_YEY0NmQy" 
+				<a href="https://t.me/+SNgo0XO_YEY0NmQy" 
 				   class="block w-full text-center font-bold text-lg text-white p-2.5 mt-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl no-underline"
 				   style="background: linear-gradient(-45deg, #0000FF, #8A2BE2, #FF0080, #FF0000); background-size: 400% 400%; animation: gradient-animation 5s ease infinite;">
 				    💸 КУПЛЮ / ПРОДАМ 💸
@@ -612,7 +424,6 @@
         </div>
         <button class="carousel-btn prev" onclick="prevSlide('carousel-dekanat')">&#10094;</button>
         <button class="carousel-btn next" onclick="nextSlide('carousel-dekanat')">&#10095;</button>
-        <div class="carousel-dots" id="dots-carousel-dekanat"></div>
     </div>
 </div>
 
@@ -643,7 +454,6 @@
         </div>
         <button class="carousel-btn prev" onclick="prevSlide('carousel-contacts')">&#10094;</button>
         <button class="carousel-btn next" onclick="nextSlide('carousel-contacts')">&#10095;</button>
-        <div class="carousel-dots" id="dots-carousel-contacts"></div>
     </div>
 </div>
 
@@ -1549,241 +1359,108 @@
         
     </div>
 
-    <button id="btn-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Наверх">↑</button>
-
 <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            // ─────────────────────────────────────────
-            //  АККОРДЕОН
-            // ─────────────────────────────────────────
+            // --- КОД ДЛЯ АККОРДЕОНА (остаётся без изменений) ---
             const accordionButtons = document.querySelectorAll('.accordion-button');
 
-            /* Пересчитывает max-height всех открытых родительских аккордеонов */
-            function recalcParents(element) {
-                let parent = element.closest('.accordion-content');
+            const updateParentHeight = (element, change) => {
+                let parent = element.parentElement.closest('.accordion-content');
                 while (parent) {
                     if (parent.style.maxHeight && parent.style.maxHeight !== '0px') {
-                        // Временно снимаем overflow чтобы scrollHeight считался правильно
-                        const prevOverflow = parent.style.overflow;
-                        parent.style.overflow = 'hidden';
-                        parent.style.maxHeight = parent.scrollHeight + 'px';
-                        parent.style.overflow = prevOverflow;
+                        const currentHeight = parseInt(parent.style.maxHeight, 10);
+                        parent.style.maxHeight = (currentHeight + change) + "px";
                     }
-                    parent = parent.parentElement
-                        ? parent.parentElement.closest('.accordion-content')
-                        : null;
+                    parent = parent.parentElement.closest('.accordion-content');
                 }
-            }
+            };
 
             accordionButtons.forEach(button => {
-                // Исправляем стрелки: убираем group-[.active] в пользу прямого CSS
-                const arrow = button.querySelector('.accordion-arrow');
-                if (arrow) {
-                    // Убираем только translate если стрелка с position:absolute
-                    if (arrow.style.transform || arrow.className.includes('translate-y')) {
-                        arrow.classList.add('no-translate');
-                    }
-                }
-
                 button.addEventListener('click', (e) => {
                     e.stopPropagation();
-
-                    // Ripple-эффект
-                    const ripple = document.createElement('span');
-                    ripple.classList.add('ripple');
-                    const rect = button.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height) * 2;
-                    const x = (e.clientX || rect.left + rect.width / 2) - rect.left - size / 2;
-                    const y = (e.clientY || rect.top + rect.height / 2) - rect.top - size / 2;
-                    ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
-                    button.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-
                     const content = button.nextElementSibling;
                     if (!content || !content.classList.contains('accordion-content')) return;
 
+                    const contentScrollHeight = content.scrollHeight;
                     const isActive = button.classList.contains('active');
+                    
+                    const parentContainer = button.parentElement.parentElement;
+                    let siblingButtons;
+                    let parentToUpdate = button.closest('.accordion-content');
 
-                    // Закрываем братские аккордеоны (на том же уровне)
-                    const parentEl = button.parentElement.parentElement;
-                    const siblingButtons = Array.from(
-                        parentEl.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button')
-                    );
+                    if (!button.parentElement.parentElement.classList.contains('accordion-content')) {
+                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .overflow-hidden > .accordion-button, :scope > .my-2 > .accordion-button'));
+                    } else {
+                        siblingButtons = Array.from(button.parentElement.parentElement.querySelectorAll(':scope > .my-2 > .accordion-button'));
+                    }
 
                     siblingButtons.forEach(btn => {
-                        if (btn !== button && btn.classList.contains('active')) {
-                            const sc = btn.nextElementSibling;
+                        if (btn && btn !== button && btn.classList.contains('active')) {
+                            const siblingContent = btn.nextElementSibling;
+                            const siblingContentHeight = siblingContent.scrollHeight;
                             btn.classList.remove('active');
-                            sc.style.maxHeight = null;
-                            recalcParents(btn);
+                            siblingContent.style.maxHeight = null;
+                            if (parentToUpdate) {
+                               updateParentHeight(btn, -siblingContentHeight);
+                            }
                         }
                     });
 
                     if (!isActive) {
                         button.classList.add('active');
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        // После открытия пересчитываем родителей
-                        setTimeout(() => recalcParents(button), 20);
-                        // Повторный пересчёт — на случай медленной загрузки изображений
-                        setTimeout(() => {
-                            content.style.maxHeight = content.scrollHeight + 'px';
-                            recalcParents(button);
-                        }, 500);
+                        content.style.maxHeight = contentScrollHeight + "px";
+                        if (parentToUpdate) {
+                           updateParentHeight(button, contentScrollHeight);
+                        }
                     } else {
                         button.classList.remove('active');
                         content.style.maxHeight = null;
-                        recalcParents(button);
+                        if (parentToUpdate) {
+                           updateParentHeight(button, -contentScrollHeight);
+                        }
                     }
                 });
             });
 
-            // ─────────────────────────────────────────
-            //  КНОПКА «НАВЕРХ»
-            // ─────────────────────────────────────────
-            const btnTop = document.getElementById('btn-to-top');
-            window.addEventListener('scroll', () => {
-                btnTop.classList.toggle('visible', window.scrollY > 300);
-            }, { passive: true });
-
-            // ─────────────────────────────────────────
-            //  ИНИЦИАЛИЗАЦИЯ КАРУСЕЛЕЙ
-            // ─────────────────────────────────────────
+            // --- КОД ДЛЯ ИНИЦИАЛИЗАЦИИ СЛАЙДЕРОВ (перенесен сюда) ---
             showSlide('carousel-dekanat', 0);
             showSlide('carousel-contacts', 0);
-
-            // ─────────────────────────────────────────
-            //  АВТОПРОКРУТКА КАРУСЕЛЕЙ
-            // ─────────────────────────────────────────
-            function startAutoplay(id, interval) {
-                return setInterval(() => {
-                    if (!carousels[id].paused) nextSlide(id);
-                }, interval);
-            }
-
-            Object.keys(carousels).forEach(id => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                carousels[id].timer = startAutoplay(id, 5000);
-                el.addEventListener('mouseenter', () => { carousels[id].paused = true; });
-                el.addEventListener('mouseleave', () => { carousels[id].paused = false; });
-                el.addEventListener('touchstart',  () => { carousels[id].paused = true; }, { passive: true });
-                el.addEventListener('touchend',    () => {
-                    setTimeout(() => { carousels[id].paused = false; }, 3000);
-                }, { passive: true });
-            });
         });
 
-        // ─────────────────────────────────────────
-        //  СОСТОЯНИЕ И УПРАВЛЕНИЕ КАРУСЕЛЯМИ
-        // ─────────────────────────────────────────
+        // --- КОД ДЛЯ УПРАВЛЕНИЯ СЛАЙДЕРАМИ (остаётся снаружи) ---
         const carousels = {
-            'carousel-dekanat':  { currentIndex: 0, paused: false },
-            'carousel-contacts': { currentIndex: 0, paused: false }
+            'carousel-dekanat': { currentIndex: 0 },
+            'carousel-contacts': { currentIndex: 0 }
         };
-
-        function buildDots(carouselId, total) {
-            const container = document.getElementById('dots-' + carouselId);
-            if (!container) return;
-            container.innerHTML = '';
-            for (let i = 0; i < total; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot';
-                dot.setAttribute('aria-label', 'Слайд ' + (i + 1));
-                dot.addEventListener('click', () => showSlide(carouselId, i));
-                container.appendChild(dot);
-            }
-        }
-
-        function updateDots(carouselId, index) {
-            const container = document.getElementById('dots-' + carouselId);
-            if (!container) return;
-            container.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
 
         function showSlide(carouselId, index) {
             const carousel = document.getElementById(carouselId);
-            if (!carousel) return;
             const inner = carousel.querySelector('.carousel-inner');
             const items = carousel.querySelectorAll('.carousel-item');
-            const total = items.length;
+            const totalItems = items.length;
             const state = carousels[carouselId];
 
-            if (total === 0) return;
+            if (index >= totalItems) {
+                state.currentIndex = 0;
+            } else if (index < 0) {
+                state.currentIndex = totalItems - 1;
+            } else {
+                state.currentIndex = index;
+            }
 
-            // Первый вызов — строим точки
-            const dotsEl = document.getElementById('dots-' + carouselId);
-            if (dotsEl && dotsEl.children.length !== total) buildDots(carouselId, total);
-
-            if (index >= total) state.currentIndex = 0;
-            else if (index < 0) state.currentIndex = total - 1;
-            else state.currentIndex = index;
-
-            inner.style.transform = `translateX(-${state.currentIndex * 100}%)`;
-            updateDots(carouselId, state.currentIndex);
+            const offset = -state.currentIndex * 100;
+            inner.style.transform = `translateX(${offset}%)`;
         }
 
         function nextSlide(carouselId) {
-            showSlide(carouselId, carousels[carouselId].currentIndex + 1);
+            const state = carousels[carouselId];
+            showSlide(carouselId, state.currentIndex + 1);
         }
+
         function prevSlide(carouselId) {
-            showSlide(carouselId, carousels[carouselId].currentIndex - 1);
+            const state = carousels[carouselId];
+            showSlide(carouselId, state.currentIndex - 1);
         }
-
-        // ─────────────────────────────────────────
-        //  СВАЙП НА МОБИЛЬНЫХ
-        // ─────────────────────────────────────────
-        (function initSwipe() {
-            ['carousel-dekanat', 'carousel-contacts'].forEach(id => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                let startX = 0, isDragging = false;
-
-                // Блокируем контекстное меню (правая кнопка мыши / долгое нажатие)
-                el.addEventListener('contextmenu', e => e.preventDefault(), true);
-
-                // Блокируем долгое нажатие на мобильных (запасной вариант)
-                let longPressTimer;
-                el.addEventListener('touchstart', e => {
-                    longPressTimer = setTimeout(() => {
-                        // Отменяем любой pending touch
-                        el.dispatchEvent(new TouchEvent('touchend', { bubbles: true }));
-                    }, 400);
-                    startX = e.touches[0].clientX;
-                    isDragging = true;
-                }, { passive: true });
-                el.addEventListener('touchend',  () => clearTimeout(longPressTimer), { passive: true });
-                el.addEventListener('touchmove', () => clearTimeout(longPressTimer), { passive: true });
-
-                el.addEventListener('touchmove', e => {
-                    if (!isDragging) return;
-                    const dx = e.touches[0].clientX - startX;
-                    if (Math.abs(dx) > 8) e.preventDefault();
-                }, { passive: false });
-
-                el.addEventListener('touchend', e => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    const dx = e.changedTouches[0].clientX - startX;
-                    if (Math.abs(dx) > 40) {
-                        dx < 0 ? nextSlide(id) : prevSlide(id);
-                    }
-                }, { passive: true });
-
-                // Мышь (desktop-drag)
-                el.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; });
-                el.addEventListener('mousemove', e => { if (isDragging) e.preventDefault(); });
-                el.addEventListener('mouseup', e => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    const dx = e.clientX - startX;
-                    if (Math.abs(dx) > 40) dx < 0 ? nextSlide(id) : prevSlide(id);
-                });
-                el.addEventListener('mouseleave', () => { isDragging = false; });
-            });
-        })();
-</script>
+    </script>
 </body>
 </html>
