@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         body {
@@ -1370,38 +1369,7 @@
 
 <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-    // 1. Инициализируем и раскрываем Telegram Web App на весь экран
-    const tg = window.Telegram.WebApp;
-    tg.expand();
-    
-    // 2. Перехватываем клики по всем ссылкам
-    document.body.addEventListener('click', (e) => {
-        // Ищем тег <a>: вдруг пользователь кликнул на иконку (span) внутри ссылки
-        const link = e.target.closest('a');
-        
-        // Если клик был по ссылке и у нее есть href
-        if (link && link.href) {
-            e.preventDefault(); // Блокируем стандартный переход браузера
-            const url = link.href;
-            
-            // Если мы находимся внутри Телеграма
-            if (tg.initDataUnsafe && Object.keys(tg.initDataUnsafe).length > 0) {
-                if (url.includes('t.me')) {
-                    // Открываем чаты/каналы нативно в Телеграме
-                    tg.openTelegramLink(url);
-                } else {
-                    // Открываем внешние сайты (ВКонтакте) во встроенном браузере ТГ
-                    tg.openLink(url);
-                }
-            } else {
-                // Резервный вариант: если ты тестируешь страницу просто в браузере на ПК
-                window.open(url, '_blank', 'noopener,noreferrer');
-            }
-        }
-    });
-		
-			// --- КОД ДЛЯ АККОРДЕОНА (остаётся без изменений) ---
+            // --- КОД ДЛЯ АККОРДЕОНА (остаётся без изменений) ---
             const accordionButtons = document.querySelectorAll('.accordion-button');
 
             const updateParentHeight = (element, change) => {
