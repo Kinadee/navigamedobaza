@@ -6,7 +6,7 @@
     <title>Навигация Медобаза</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -18,18 +18,18 @@
             background-color: white;
         }
         /* Стили для кастомных цветов заголовков */
-        .header-color-1 { background-color: #ef4444; color: white; } /* red-500 */
-        .header-color-2 { background-color: #f97316; color: white; } /* orange-500 */
-        .header-color-3 { background-color: #eab308; color: white; } /* yellow-500 */
-        .header-color-4 { background-color: #22c55e; color: white; } /* green-500 */
-        .header-color-5 { background-color: #0ea5e9; color: white; } /* sky-500 */
-        .header-color-6 { background-color: #6366f1; color: white; } /* indigo-500 */
-        .header-color-7 { background-color: #a855f7; color: white; } /* purple-500 */
-        .header-color-8 { background-color: #ec4899; color: white; } /* pink-500 */
-        .header-color-9 { background-color: #14b8a6; color: white; } /* teal-500 */
-        .header-color-10 { background-color: #f43f5e; color: white; } /* rose-500 */
-        .header-color-11 { background-color: #3b82f6; color: white; } /* blue-500 */
-        .header-color-12 { background-color: #d946ef; color: white; } /* fuchsia-500 */
+        .header-color-1 { background-color: #ef4444; color: white; }
+        .header-color-2 { background-color: #f97316; color: white; }
+        .header-color-3 { background-color: #eab308; color: white; }
+        .header-color-4 { background-color: #22c55e; color: white; }
+        .header-color-5 { background-color: #0ea5e9; color: white; }
+        .header-color-6 { background-color: #6366f1; color: white; }
+        .header-color-7 { background-color: #a855f7; color: white; }
+        .header-color-8 { background-color: #ec4899; color: white; }
+        .header-color-9 { background-color: #14b8a6; color: white; }
+        .header-color-10 { background-color: #f43f5e; color: white; }
+        .header-color-11 { background-color: #3b82f6; color: white; }
+        .header-color-12 { background-color: #d946ef; color: white; }
 
         /* ===== CSS ДЛЯ АНИМАЦИИ ГРАДИЕНТА ===== */
         @keyframes gradient-animation {
@@ -80,37 +80,101 @@
         .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
         .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
 
-		/* ===== ДИЗАЙН КНОПОК ИСПОЛНИТЕЛЕЙ С РАМКОЙ ===== */
-        .executor-button {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 0.8rem 1rem;
-            border-radius: 0.5rem; /* 8px */
-            background-color: #f3f4f6; /* gray-100 */
-            color: #1f2937; /* gray-800 */
-            font-weight: 600; /* semibold */
+        /* ===== КАРТОЧКА: ИМЯ СЛЕВА + УВЕЛИЧЕННЫЕ СЕНСОРНЫЕ КНОПКИ СПРАВА ===== */
+        .helper-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.65rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.9rem;
+            padding: 0.45rem 0.55rem 0.45rem 0.85rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+        }
+        .helper-row:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .helper-name-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #1e293b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .helper-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-shrink: 0;
+        }
+
+        /* Увеличенные кнопки под нажатие пальцем */
+        .touch-icon-btn {
+            width: 46px;
+            height: 38px;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            border: 1px solid #e5e7eb; /* Рамка (gray-200) */
-            transition: all 0.3s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
         }
-        .executor-button:hover {
-            background-color: #0177ff; /* VK Brand Color */
+
+        /* Значок VK */
+        .touch-icon-btn.vk {
+            background: #0077ff;
             color: #ffffff;
-            border-color: #5c3298; /* Рамка в цвет фона при наведении */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px -2px rgba(74, 118, 168, 0.4);
+            box-shadow: 0 2px 6px rgba(0, 119, 255, 0.35);
         }
+        .touch-icon-btn.vk:hover, .touch-icon-btn.vk:active {
+            background: #0060cf;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 119, 255, 0.5);
+        }
+
+        /* Значок TG (Активный) */
+        .touch-icon-btn.tg {
+            background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(34, 158, 217, 0.35);
+        }
+        .touch-icon-btn.tg:hover, .touch-icon-btn.tg:active {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(34, 158, 217, 0.55);
+            filter: brightness(1.05);
+        }
+
+        /* Значок TG (Заблокированный) */
+        .touch-icon-btn.tg.disabled {
+            background: #f1f5f9;
+            color: #94a3b8;
+            border: 1px dashed #cbd5e1;
+            box-shadow: none;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.75;
+        }
+
         /* ===== СТИЛИ ДЛЯ СЛАЙДЕРА-КАРУСЕЛИ ===== */
         .carousel {
             position: relative;
             overflow: hidden;
-            border-radius: 0.75rem; /* 12px */
+            border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10+ */
-            user-select: none; /* Standard */
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         .carousel-inner {
             display: flex;
@@ -124,12 +188,8 @@
             width: 100%;
             display: block;
             border-radius: 0.75rem;
-        }
-
-        /* ===== НОВЫЙ КОД ДЛЯ БЛОКИРОВКИ ЗАЖАТИЯ ИЗОБРАЖЕНИЙ ===== */
-        .carousel img {
-            pointer-events: none; /* Делает изображение 'прозрачным' для нажатий */
-            -webkit-touch-callout: none; /* Запрещает вызов меню в Safari (iOS) */
+            pointer-events: none;
+            -webkit-touch-callout: none;
         }
 
         .carousel-btn {
@@ -141,8 +201,8 @@
             border: none;
             padding: 0.5rem 1rem;
             cursor: pointer;
-            border-radius: 9999px; /* full */
-            font-size: 1.25rem; /* 20px */
+            border-radius: 9999px;
+            font-size: 1.25rem;
             font-weight: bold;
             z-index: 10;
             transition: background-color 0.3s ease;
@@ -183,7 +243,7 @@
                     <span class="text-xl">🚨</span> <span class="text-center flex-grow">СРОЧНЫЕ ЗАПРОСЫ - РАЗЛИЧНОГО ВИДА ПРОСЬБЫ</span> <span class="text-xl">🚨</span>
 				</a>
 
-                <!-- АККОРДЕОН ПОМОЩЬ В ПРЕДМЕТАХ ПЕРЕНЕСЕН СЮДА -->
+                <!-- АККОРДЕОН ПОМОЩЬ В ПРЕДМЕТАХ -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden mt-3">
                     <button class="accordion-button group w-full flex items-center justify-between animated-gradient text-white p-4 transition-all duration-300 focus:outline-none rounded-2xl group-[.active]:rounded-b-none hover:brightness-110">
                         <span class="text-xl">🤝</span>
@@ -191,10 +251,13 @@
                         <span class="accordion-arrow transition-transform duration-300 group-[.active]:rotate-180">▼</span>
                     </button>
                     <div class="accordion-content px-4 text-gray-700">
-                        <!-- Скрытый SVG для переиспользования иконки VK -->
+                        <!-- SVG иконки -->
                         <svg style="display: none;">
                             <symbol id="vk-icon" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M23.45 5.948c.166-.546 0-.948-.795-.948H20.03c-.668 0-.976.347-1.143.73 0 0-1.335 3.196-3.226 5.272-.612.602-.89.793-1.224.793-.167 0-.418-.191-.418-.738V5.948c0-.656-.184-.948-.74-.948H9.151c-.417 0-.668.304-.668.593 0 .621.936.765 1.036 2.513v3.811c0 .833-.153.984-.487.984-.89 0-3.055-3.211-4.34-6.885-.249-.715-.5-1.016-1.178-1.016H.88c-.75 0-.9.347-.9.73 0 .682.89 4.07 4.145 8.551 2.17 3.06 5.225 4.72 8.008 4.72 1.67 0 1.875-.368 1.875-1.004V15.44c0-.736.156-.884.687-.884.39 0 1.057.191 2.615 1.667 1.78 1.749 2.073 2.532 3.074 2.532h2.625c.75 0 1.126-.368.91-1.096-.238-.716-1.084-1.722-2.208-2.983-.556-.662-1.39-1.38-1.668-1.749-.39-.536-.278-.767 0-1.213 0-.001 2.95-4.103 3.498-5.766z" clip-rule="evenodd"></path>
+                            </symbol>
+                            <symbol id="tg-icon" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.674c.458 0 .66-.21.916-.457l2.199-2.138 4.574 3.379c.843.465 1.45.225 1.66-.782L21.9 4.96c.308-1.233-.47-1.792-1.235-1.243z" clip-rule="evenodd"></path>
                             </symbol>
                         </svg>
 
@@ -203,6 +266,7 @@
                         </p>
                         <div class="py-2 space-y-2">
     
+                            <!-- Гуманитарные предметы -->
                             <div class="overflow-hidden">
                                 <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-1 rounded-lg shadow-md">
                                     <span class="flex items-center gap-1">
@@ -212,15 +276,49 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-                                    <p class="text-center bg-white font-bold p-2">Рефераты, НИРс, отчёты, аннотации, доклады, конспекты и эссе по профильным/непрофильным предметам (истории, медицине, правоведению, экономике, философии, психологии, анатомии и др.)</p>
-                                    <div class="space-y-2">
-                                        <a href="https://vk.ru/ulyanov_helper" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Александр Ульянов</span></a>
-                                        <a href="https://vk.ru/smaksimo" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>София Максимова</span></a>
-										<a href="https://vk.ru/kruzenshternmed" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Александр Павловский</span></a>
+                                    <p class="text-center bg-white font-bold p-2 text-sm text-gray-700">Рефераты, НИРс, отчёты, аннотации, доклады, конспекты и эссе по профильным/непрофильным предметам (истории, медицине, правоведению, экономике, философии, психологии, анатомии и др.)</p>
+                                    <div class="p-2 space-y-2">
+                                        <!-- Ульянов: Активны оба значка (TG @Glecus) -->
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Александр Ульянов</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/ulyanov_helper" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <a href="https://t.me/Glecus" target="_blank" class="touch-icon-btn tg" title="Telegram (@Glecus)">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">София Максимова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/smaksimo" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Александр Павловский</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/kruzenshternmed" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                  </div>
                             </div>
     
+                            <!-- Биология -->
                             <div class="overflow-hidden">
                                 <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-2 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -230,14 +328,45 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/bio_med_helpstudents" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Инфузория Туфелька</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
-                                    <a href="https://vk.ru/ethereal1917" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Диана Шаповалова</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Инфузория Туфелька</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/bio_med_helpstudents" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Диана Шаповалова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/ethereal1917" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Химия -->
                             <div class="overflow-hidden">
                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-3 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -247,13 +376,34 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/e.himik" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Эрик Химик</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Эрик Химик</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/e.himik" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
     
+                            <!-- Биохимия -->
                             <div class="overflow-hidden">
                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-4 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -263,13 +413,34 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/bmw513" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Марина Владимировна</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Марина Владимировна</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/bmw513" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Анатомия -->
                             <div class="overflow-hidden">
                                 <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-5 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -279,13 +450,34 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/m.pavlova011" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Мария Павлова</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Мария Павлова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/m.pavlova011" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Латынь -->
                             <div class="overflow-hidden">
                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-6 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -295,14 +487,45 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/m.krutel" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Маша Крутель</span></a>
-                                    <a href="https://vk.ru/sergeeva_mashik" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Маша Сергеева</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Маша Крутель</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/m.krutel" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Маша Сергеева</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/sergeeva_mashik" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Микробиология / Патан -->
                             <div class="overflow-hidden">
                                 <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-7 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -312,13 +535,34 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/evelina_yurevna" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Эвелина Гончарова</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Эвелина Гончарова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/evelina_yurevna" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Физика / МОДМ -->
                             <div class="overflow-hidden">
                                 <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-8 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -328,15 +572,56 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/pspbgmuphysics" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Физика Модм</span></a>
-									<a href="https://vk.ru/id481568712" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Анна Тимофеева</span></a>
-                                    <a href="https://vk.ru/sharkphys" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Акула Павлова</span></a>
-                                    <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Физика Модм</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/pspbgmuphysics" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Анна Тимофеева</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/id481568712" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Акула Павлова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/sharkphys" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Английский язык -->
                             <div class="overflow-hidden">
                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-9 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -346,13 +631,34 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/victoria_malkova" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Виктория Малкова</span></a>
-                                    <a href="https://vk.ru/j.avrora" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Jya Avrora</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Виктория Малкова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/victoria_malkova" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Jya Avrora</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/j.avrora" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Диктовка/Микронаушник -->
                             <div class="overflow-hidden">
                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-10 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -362,16 +668,57 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-                                    <p class="text-center bg-white font-bold p-2">Любой исполнитель по конкретной дисциплине может также подиктовать и выполнить различные виды услуг</p>
-                                    <div class="space-y-2">
-                                        <a href="https://vk.ru/aivachai" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Андрей Айвазян</span></a>
-                                        <a href="https://vk.ru/privetmed_pomogalov" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Privetmed Pomogalov</span></a>
-										<a href="https://vk.ru/id1084347835" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Анна Иванова</span></a>
-										<a href="https://vk.ru/microhelp1" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Easy Study</span></a>
+                                    <p class="text-center bg-white font-bold p-2 text-sm text-gray-700">Любой исполнитель по конкретной дисциплине может также подиктовать и выполнить различные виды услуг</p>
+                                    <div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Андрей Айвазян</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/aivachai" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Privetmed Pomogalov</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+										<div class="helper-row">
+                                            <span class="helper-name-label">Анна Иванова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/id1084347835" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+										<div class="helper-row">
+                                            <span class="helper-name-label">Easy Study</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/microhelp1" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
+                            <!-- Написание альбома -->
                             <div class="overflow-hidden">
                                <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-11 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -381,13 +728,34 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/djulikell.mark" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Регина Юсупова</span></a>
-									<a href="https://vk.ru/id1084347835" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Анна Иванова</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Регина Юсупова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/djulikell.mark" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+									    <div class="helper-row">
+                                            <span class="helper-name-label">Анна Иванова</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/id1084347835" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             
+                            <!-- Тесты -->
                             <div class="overflow-hidden">
                               <button class="accordion-button group w-full relative flex justify-center items-center text-center p-3 focus:outline-none font-semibold header-color-12 rounded-lg shadow-md">
                                     <span class="flex items-center gap-2">
@@ -397,11 +765,21 @@
                                     <span class="accordion-arrow transition-transform duration-300 text-xl absolute right-3 group-[.active]:rotate-180">▼</span>
                                 </button>
                                 <div class="accordion-content bg-white">
-									<div class="p-4 space-y-2">
-                                    <a href="https://vk.ru/kudrech" class="executor-button"><span class="inline-flex items-center gap-2"><svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>Артём Колотов</span></a>
+									<div class="p-2 space-y-2">
+                                        <div class="helper-row">
+                                            <span class="helper-name-label">Артём Колотов</span>
+                                            <div class="helper-actions">
+                                                <a href="https://vk.ru/kudrech" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#vk-icon"></use></svg>
+                                                </a>
+                                                <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
+                                                    <svg class="w-[22px] h-[22px] fill-current"><use href="#tg-icon"></use></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-						</div>
+						    </div>
                             <p class="text-center italic text-gray-500 pt-2">📌 Продолжение следует...</p>
                         </div>
                     </div>
