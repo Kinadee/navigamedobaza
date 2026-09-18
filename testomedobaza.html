@@ -80,47 +80,50 @@
         .faculty-gradient-2-lech { background: linear-gradient(45deg, #22c55e, #84cc16); }
         .faculty-gradient-2-stom { background: linear-gradient(45deg, #14b8a6, #06b6d4); }
 
-        /* ===== ОПТИМИЗИРОВАННАЯ КАРТОЧКА ПОД МОБИЛЬНЫЕ ===== */
+        /* ===== КАРТОЧКА: КОНТРАСТНЫЙ ФОН, ЧЕТКАЯ РАМКА И ЦЕНТРОВКА ===== */
         .helper-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.5rem;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
-            padding: 0.45rem 0.55rem 0.45rem 0.7rem;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            gap: 0.75rem;
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 0.95rem;
+            padding: 0.55rem 0.65rem 0.55rem 0.85rem;
+            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
             transition: all 0.2s ease;
         }
         .helper-row:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.1);
             transform: translateY(-1px);
         }
 
-        /* Имя теперь НЕ обрезается многоточием, а читается полностью */
+        /* Центрированное имя с комфортным переносом */
         .helper-name-label {
-            font-size: 0.84rem;
+            font-size: 0.88rem;
             line-height: 1.25;
-            font-weight: 600;
+            font-weight: 700;
             color: #1e293b;
+            text-align: center;
             flex: 1;
             word-break: break-word;
+            padding: 0 0.25rem;
         }
 
         .helper-actions {
             display: flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.45rem;
             flex-shrink: 0;
         }
 
-        /* Аккуратные круглые кнопки 32x32 px */
+        /* Увеличенные кнопки (40x40px) */
         .touch-icon-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 0.55rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 0.65rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -133,33 +136,35 @@
         .touch-icon-btn.vk {
             background: #0077ff;
             color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0, 119, 255, 0.28);
+            box-shadow: 0 2px 6px rgba(0, 119, 255, 0.32);
         }
         .touch-icon-btn.vk:hover, .touch-icon-btn.vk:active {
             background: #0060cf;
             transform: scale(1.06);
+            box-shadow: 0 4px 10px rgba(0, 119, 255, 0.45);
         }
 
         /* Значок TG (Активный) */
         .touch-icon-btn.tg {
             background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
             color: #ffffff;
-            box-shadow: 0 2px 5px rgba(34, 158, 217, 0.28);
+            box-shadow: 0 2px 6px rgba(34, 158, 217, 0.32);
         }
         .touch-icon-btn.tg:hover, .touch-icon-btn.tg:active {
             transform: scale(1.06);
+            box-shadow: 0 4px 10px rgba(34, 158, 217, 0.5);
             filter: brightness(1.05);
         }
 
         /* Значок TG (Заблокированный) */
         .touch-icon-btn.tg.disabled {
-            background: #f1f5f9;
+            background: #e2e8f0;
             color: #94a3b8;
-            border: 1px dashed #cbd5e1;
+            border: 1px dashed #94a3b8;
             box-shadow: none;
             cursor: not-allowed;
             pointer-events: none;
-            opacity: 0.7;
+            opacity: 0.65;
         }
 
         /* ===== СТИЛИ ДЛЯ СЛАЙДЕРА-КАРУСЕЛИ ===== */
@@ -280,10 +285,10 @@
                                             <span class="helper-name-label">Александр Ульянов</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/ulyanov_helper" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <a href="https://t.me/Glecus" target="_blank" class="touch-icon-btn tg" title="Telegram (@Glecus)">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </a>
                                             </div>
                                         </div>
@@ -292,10 +297,10 @@
                                             <span class="helper-name-label">София Максимова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/smaksimo" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -304,10 +309,10 @@
                                             <span class="helper-name-label">Александр Павловский</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/kruzenshternmed" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -330,10 +335,10 @@
                                             <span class="helper-name-label">Инфузория Туфелька</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/bio_med_helpstudents" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -341,10 +346,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -352,10 +357,10 @@
                                             <span class="helper-name-label">Диана Шаповалова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/ethereal1917" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -378,10 +383,10 @@
                                             <span class="helper-name-label">Эрик Химик</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/e.himik" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -389,10 +394,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -415,10 +420,10 @@
                                             <span class="helper-name-label">Марина Владимировна</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/bmw513" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -426,10 +431,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -452,10 +457,10 @@
                                             <span class="helper-name-label">Мария Павлова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/m.pavlova011" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -463,10 +468,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -489,10 +494,10 @@
                                             <span class="helper-name-label">Маша Крутель</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/m.krutel" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -500,10 +505,10 @@
                                             <span class="helper-name-label">Маша Сергеева</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/sergeeva_mashik" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -511,10 +516,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -537,10 +542,10 @@
                                             <span class="helper-name-label">Эвелина Гончарова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/evelina_yurevna" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -548,10 +553,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -574,10 +579,10 @@
                                             <span class="helper-name-label">Физика Модм</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/pspbgmuphysics" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -585,10 +590,10 @@
                                             <span class="helper-name-label">Анна Тимофеева</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/id481568712" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -596,10 +601,10 @@
                                             <span class="helper-name-label">Акула Павлова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/sharkphys" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -607,10 +612,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -633,10 +638,10 @@
                                             <span class="helper-name-label">Виктория Малкова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/victoria_malkova" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -644,10 +649,10 @@
                                             <span class="helper-name-label">Jya Avrora</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/j.avrora" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -671,10 +676,10 @@
                                             <span class="helper-name-label">Андрей Айвазян</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/aivachai" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -682,10 +687,10 @@
                                             <span class="helper-name-label">Privetmed Pomogalov</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/privetmed_pomogalov" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -693,10 +698,10 @@
                                             <span class="helper-name-label">Анна Иванова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/id1084347835" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -704,10 +709,10 @@
                                             <span class="helper-name-label">Easy Study</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/microhelp1" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -730,10 +735,10 @@
                                             <span class="helper-name-label">Регина Юсупова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/djulikell.mark" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -741,10 +746,10 @@
                                             <span class="helper-name-label">Анна Иванова</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/id1084347835" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
@@ -767,10 +772,10 @@
                                             <span class="helper-name-label">Артём Колотов</span>
                                             <div class="helper-actions">
                                                 <a href="https://vk.ru/kudrech" target="_blank" class="touch-icon-btn vk" title="ВКонтакте">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#vk-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#vk-icon"></use></svg>
                                                 </a>
                                                 <span class="touch-icon-btn tg disabled" title="Telegram отсутствует">
-                                                    <svg class="w-4 h-4 fill-current"><use href="#tg-icon"></use></svg>
+                                                    <svg class="w-5 h-5 fill-current"><use href="#tg-icon"></use></svg>
                                                 </span>
                                             </div>
                                         </div>
